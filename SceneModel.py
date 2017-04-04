@@ -11,7 +11,7 @@ class SceneModel():
         self.scene_length = DEF_SCENE_LENGTH
         self.selected_light_id = None
 
-        self.play_state = PLAY_STATE
+        self.play_state = PAUSE_STATE
 
         self.light_id_counter = 0
 
@@ -57,13 +57,11 @@ class SceneModel():
 
     def set_scene_length(self, length):
         self.scene_length = length
-        self.notify_observers("SCENELENGTH_UPDATE")
+        self.notify_observers("SCENE_LENGTH_UPDATE")
 
     def switch_play_state(self):
         if self.play_state == PAUSE_STATE:
             self.play_state = PLAY_STATE
-
-
 
         elif self.play_state == PLAY_STATE:
             self.play_state = PAUSE_STATE
@@ -213,8 +211,19 @@ class ClipModel():
         self.send_update("CLIP_LENGTH_UPDATED")
 
     def clip_start_updated(self, start):
+        print(start)
         self.clip_start = start
         self.send_update("CLIP_START_UPDATED")
+
+    def clip_resized(self, value:dict):
+        self.clip_start = value["start"]
+        self.clip_end = value["end"]
+        self.clip_length = self.clip_end - self.clip_start
+
+        self.send_update("SELECTED_CLIP_RESIZED")
+
+
+
 
     def clip_end_updated(self,end):
         self.clip_end = end

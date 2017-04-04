@@ -1,5 +1,8 @@
 import tkinter as tk
 from Utils import *
+from SceneModel import ClipModel, ColorClipModel, MovementClipModel
+
+from math import floor
 
 class TimelineContainer(tk.Frame):
     def __init__(self, parent):
@@ -22,43 +25,235 @@ class TimelineContainer(tk.Frame):
         length=4
         
     def set_length(self, beats):
+        self.move_timeline.set_length(beats)
+        self.color_timeline.set_length(beats)
+
+    def message_view(self, message, value=None):
+        self.parent.message_view(message, value)
 
 
 
-class MovementTimeline(tk.Frame):
+
+
+class Timeline(tk.Frame):
     def __init__(self,parent):
         self.parent = parent
-        super().__init__(parent, height=200, padx=5, relief=tk.GROOVE, borderwidth=5)
-        self.initialize()
+        super().__init__(parent, height=200, relief=tk.GROOVE, borderwidth=5)
 
-    def initialize(self):
-        self.label = tk.Label(self,text="MovementTimeline")
-        self.label.pack(side=tk.LEFT)
+        self.canvas = tk.Canvas(self, height = 50, background= "GREY")
+        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
+
+
+
+        self.length=DEF_SCENE_LENGTH
+
+        self.clips = []
+
+        self.canvas.bind("<Configure>", lambda x: self.message_view("WINDOW_RESIZE"))
+
+
+
+
+    def set_length(self, length):
+        self.length = length
+
+    def draw_all_clips(self, clip_dict:dict):
+        self.canvas.delete("all")
+
+        if len(clip_dict) > 0:
+            for clip in clip_dict.values():
+                self.draw_clip(clip)
+
+    def draw_clip(self, clip):
+        #Override in child class
         pass
 
-    def set_length(self):
-        pass
+    def get_canvas_width(self):
+        return self.canvas.winfo_width()
 
-class ColorTimeline(tk.Frame):
+    def get_canvas_height(self):
+        return self.canvas.winfo_height()
+
+    def get_pix_per_frame(self):
+        pix_width = self.get_canvas_width()
+
+        #Length in bars
+        frame_length = beats_to_tick(self.length)
+
+        return pix_width/frame_length
+
+
+    def message_view(self, message, value=None):
+        self.parent.message_view(message, value)
+
+
+
+
+
+class MovementTimeline(Timeline):
     def __init__(self,parent):
         self.parent = parent
-        super().__init__(parent, padx=5, relief=tk.GROOVE, borderwidth=5)
-        self.initialize()
+        super().__init__(parent)
 
-    def initialize(self):
-        self.label = tk.Label(self,text="ColorTimeline")
-        self.label.pack(side=tk.LEFT)
-        pass
-    
-class Clip(tk.Frame):
-    def __init__(self,parent, start=0):
-        super().__init__(parent,bg="red")
+        self.clips = []
+
+
+
+
+    def draw_clip(self, clip:MovementClipModel):
+        c = Clip(self, self.canvas, clip)
+        self.clips.append(c)
+
+
+
+
+
+
+class ColorTimeline(Timeline):
+    def __init__(self,parent):
         self.parent = parent
-        self.start = start
-        
-        self.initialize()
+        super().__init__(parent)
 
-    def initialize(self):
-        pass
+        self.clips = []
+
+    def draw_clip(self, clip:ColorClipModel):
+        c = Clip(self, self.canvas, clip)
+        self.clips.append()
+
+class Clip():
+    def __init__(self,parent, canvas:tk.Canvas, clip):
+        self.canvas = canvas
+        self.clip = clip
+        self.parent = parent
+
+        pix_per_frame = parent.get_pix_per_frame()
+
+        start = clip.clip_start
+        end = clip.clip_end
+
+
+        start_frame = beats_to_tick(start)
+        end_frame = beats_to_tick(end)
+
+        self.start_pix = floor(start_frame * pix_per_frame)
+        self.end_pix = floor(end_frame * pix_per_frame)
+        self.height = parent.get_canvas_height()
+
+        self.drag = NO_DRAG
+
+        self.drag_data = None
+
+
+        coords = (self.start_pix, 0, self.end_pix, self.height)
+
+        self.rect_clip = self.canvas.create_rectangle(*coords, fill="blue")
+
+
+        self.canvas.tag_bind(self.rect_clip, "<ButtonPress-1>", self.on_token_press)
+        self.canvas.tag_bind(self.rect_clip, "<ButtonRelease-1>", self.on_token_release)
+        self.canvas.tag_bind(self.rect_clip, "<B1-Motion>", self.on_token_motion)
+
+
+    def on_token_press(self, event):
+        x = self.convert_to_relative(event.x)
+
+
+
+        print("click")
+        #If its a click on the start
+        if x < 10:
+            self.drag = START_DRAG
+
+        #If its a click on the end
+        elif self.end_pix - event.x < 10:
+            self.drag = END_DRAG
+
+        else:
+            self.drag = CLIP_DRAG
+            self.drag_data = event.x
+
+    def on_token_release(self,event):
+
+        self.message_view("SELECTED_CLIP_RESIZED", value=self.get_start_end_ticks())
+        self.drag = NO_DRAG
+
+    def on_token_motion(self,event):
+
+
+        if self.drag == START_DRAG :
+            if event.x >= 0 and self.check_min_size():
+             self.start_pix = event.x
+            else:
+                self.start_pix = self.end_pix - self.parent.get_pix_per_frame()
+
+
+        elif self.drag == END_DRAG:
+            if event.x <= self.parent.get_canvas_width() and self.check_min_size():
+              self.end_pix = event.x
+
+            else:
+                self.end_pix = self.start_pix + self.parent.get_pix_per_frame()
+
+        elif self.drag == CLIP_DRAG:
+            dist = event.x - self.drag_data
+            self.drag_data = event.x
+
+
+            if self.end_pix + dist < self.parent.get_canvas_width() and self.start_pix + dist > 0:
+                self.end_pix = self.end_pix + dist
+                self.start_pix = self.start_pix + dist
+
+
+        self.resize()
+
+    def convert_to_relative(self, x_coord):
+        return x_coord - self.start_pix
+
+    def convert_to_absolute(self, x_coord):
+        return x_coord + self.start_pix
+
+
+    def check_min_size(self):
+        if self.end_pix - self.start_pix > self.parent.get_pix_per_frame():
+            return True
+        else:
+            return False
+
+    def resize(self):
+        self.length = self.end_pix - self.start_pix
+
+        self.canvas.coords(self.rect_clip, self.start_pix, 0, self.end_pix, self.parent.get_canvas_height())
+
+
+
+    def get_start_end_ticks(self):
+        return {"start":self.convert_pix_to_beats(self.start_pix),
+                "end":self.convert_pix_to_beats(self.end_pix)}
+
+
+
+    def convert_pix_to_beats(self, pix):
+        pix_per_tick = self.parent.get_pix_per_frame()
+
+        if pix != 0:
+            return  (ticks_to_beat(pix / pix_per_tick))
+        else: return 0
+
+
+
+
+    def message_view(self, message, value=None):
+
+        self.parent.message_view(message, value)
+
+    def select_clip(self):
+        self.message_view("CLIP_SELECTED", value=self.clip.id)
+
+
+NO_DRAG = 0
+START_DRAG = 1
+END_DRAG = 2
+CLIP_DRAG = 3
+
         
         

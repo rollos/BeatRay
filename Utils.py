@@ -8,7 +8,7 @@ DEF_SCENE_LENGTH = 16   #Bars
 
 DEF_SHAPE = "Circle"
 
-DEF_CLIP_LENGTH = 16    #Bars
+DEF_CLIP_LENGTH = 4    #Bars
 DEF_CLIP_START = 0
 
 
@@ -147,11 +147,11 @@ class EntryBoxWithFrame(tk.LabelFrame):
 
 
     def get_entry(self):
-            return self.entry_box.get()
+            return float(self.entry_box.get())
 
-    def set_entry(self, value:int):
+    def set_entry(self, value:float):
         self.entry_box.delete(0,tk.END)
-        self.entry_box.insert(0, value)
+        self.entry_box.insert(0, "%.2f" % value)
 
 class ColorSelector(tk.Frame):
 
@@ -203,4 +203,23 @@ class ColorSelector(tk.Frame):
         self.r_var.set(color[0])
         self.g_var.set(color[1])
         self.b_var.set(color[2])
+
+
+def ticks_to_beat(ticks):
+    return ticks/24
+
+def beats_to_tick(beats):
+    return beats * 24
+
+def beats_to_bar(beats):
+    return beats/4
+
+def bars_to_beats(bars):
+    return bars*4
+
+def ticks_to_bars(ticks):
+    return beats_to_bar(ticks_to_beat(ticks))
+
+def bars_to_ticks(bars):
+    return beats_to_tick(bars_to_beats(bars))
 

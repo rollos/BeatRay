@@ -16,23 +16,23 @@ class SceneController():
         self.scene_model.switch_play_state()
 
 
-    def update(self, event_type, message, *args):
+    def update(self, event_type, message, value=None):
 
         #If we get an update from the model, update the view
         if event_type == MODELUPDATE:
             print("Controller received message from MODEL: {}".format(message))
-            self.update_view(message, args)
+            self.update_view(message, value)
 
         #If we get an update from the view, update the model
         elif event_type == VIEWUPDATE:
             print("Controller received message from VIEW: {}".format(message))
-            self.update_model(message, args)
+            self.update_model(message, value)
 
     #When the view is updated, update the model
     def update_model(self, message,value=None):
         if message == "BPM_UPDATE":
             self.scene_model.set_BPM(self.scene_view.get_bpm())
-        elif message == "SCENELENGTH_UPDATE":
+        elif message == "SCENE_LENGTH_UPDATE":
             self.scene_model.set_scene_length(self.scene_view.get_scene_length())
         elif message == "PLAY_PRESSED":
             self.scene_model.switch_play_state()
@@ -47,11 +47,10 @@ class SceneController():
             self.scene_model.save_scene()
 
         elif message == "LIGHT_SELECTED":
-            selected_light = int(self.scene_view.get_selected_light())
+            selected_light = self.scene_view.get_selected_light()
             self.scene_model.select_light(selected_light)
         elif message == "CLIP_SELECTED":
-            selected_clip = int(self.scene_view.get_selected_clip())
-            self.scene_model.get_selected_light().select_clip(selected_clip)
+            self.scene_model.get_selected_light().select_clip(value)
 
         elif message == "NEW_LIGHT":
             self.scene_model.new_light()
@@ -115,6 +114,12 @@ class SceneController():
         elif message == "S_END_DEGREES_UPDATED":
             self.scene_model.get_selected_clip().s_end_degrees_updated(self.scene_view.get_s_end_degrees())
 
+        elif message == "SELECTED_CLIP_RESIZED":
+            self.scene_model.get_selected_clip().clip_resized(value)
+
+        elif message == "WINDOW_RESIZE":
+            self.update_timelines()
+
 
 
     # When the model is updated, update the view
@@ -123,7 +128,23 @@ class SceneController():
             self.scene_view.update_play_button_state(self.scene_model.play_state)
         elif message == "LIGHT_SELECTED": #If the selected light has been updated in the model, push the newly selected light to the view
             self.scene_view.display_light(self.scene_model[self.scene_model.selected_light_id])
+            self.update_timelines()
         elif message == "CLIP_SELECTED": #If a new clip has been selected, push the newly selected clip to the view
             self.scene_view.display_clip(self.scene_model.get_selected_light().get_selected_clip())
+            self.update_timelines()
+        elif message == "SCENE_LENGTH_UPDATED":
+            self.scene_view.set_scene_length(self.scene_model.scene_length)
+
+        elif message == "CLIP_START_UPDATED":
+            self.update_timelines()
+
+        elif message == "CLIP_END_UPDATED":
+            self.update_timelines()
+
+        elif message == "SELECTED_CLIP_RESIZED":
+            self.scene_view.display_clip(self.scene_model.get_selected_clip())
+
+    def update_timelines(self):
+        self.scene_view.update_timelines(self.scene_model.get_selected_light())
 
 

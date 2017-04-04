@@ -20,9 +20,9 @@ class MainApplication(tk.Frame):
 
         self.initialize()
 
-    def message_view(self, message):
+    def message_view(self, message, value=None):
         assert self.view is not None
-        self.view.notify_observers(message)
+        self.view.notify_observers(message, value)
 
 
     def set_view(self, view):

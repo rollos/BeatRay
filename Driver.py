@@ -26,4 +26,7 @@ if __name__ == "__main__":
 
     controller = c.SceneController(model, view)
 
+    model.new_light()
+
+
     root.mainloop()

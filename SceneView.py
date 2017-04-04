@@ -12,10 +12,10 @@ class SceneView():
     def register_observer(self, observer):
         self.observers.append(observer)
 
-    def notify_observers(self, message):
+    def notify_observers(self, message, value=None):
         for observer in self.observers:
          #   try:
-            observer.update(VIEWUPDATE, message)
+            observer.update(VIEWUPDATE, message, value)
             #except AttributeError:
              #   raise AttributeError("Scene: Observer does not have update() function")
 
@@ -30,6 +30,7 @@ class SceneView():
 
     def get_scene_length(self):
         return self.gui.play_controls.scene_length_entry.get_entry()
+
 
     def get_size(self):
         return self.gui.selected_light.get_light_size()
@@ -126,15 +127,23 @@ class SceneView():
             self.gui.selected_clip.grid_forget()
 
         if type(clip) is ColorClipModel:
-            self.gui.selected_clip = self.gui.color_clip
-            self.gui.selected_clip.display_clip(clip)
+            self.gui.selected_clip = self.gui.color_clip    #Set the view of the GUI to a color clip
+            self.gui.selected_clip.display_clip(clip)       #Display the current clip in the info window
 
         elif type(clip) is MovementClipModel:
             self.gui.selected_clip = self.gui.movement_clip
             self.gui.selected_clip.display_clip(clip)
 
+
     def get_clip_type(self):
         return self.gui.selected_clip.type_var.get()
+
+    def set_scene_length(self, length):
+        self.gui.timeline.set_length(length)
+
+    def update_timelines(self, selected_lights:LightModel):
+        self.gui.timeline.color_timeline.draw_all_clips(selected_lights.color_clips)
+        self.gui.timeline.move_timeline.draw_all_clips(selected_lights.movement_clips)
 
 
 
