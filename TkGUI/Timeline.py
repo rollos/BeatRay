@@ -22,7 +22,6 @@ class TimelineContainer(tk.Frame):
         length=4
         
     def set_length(self, beats):
-        pass
 
 
 
