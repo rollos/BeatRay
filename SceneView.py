@@ -141,9 +141,9 @@ class SceneView():
     def set_scene_length(self, length):
         self.gui.timeline.set_length(length)
 
-    def update_timelines(self, selected_lights:LightModel):
-        self.gui.timeline.color_timeline.draw_all_clips(selected_lights.color_clips)
-        self.gui.timeline.move_timeline.draw_all_clips(selected_lights.movement_clips)
+    def update_timelines(self, selected_light:LightModel):
+        self.gui.timeline.color_timeline.draw_all_clips(selected_light.color_clips)
+        self.gui.timeline.move_timeline.draw_all_clips(selected_light.movement_clips)
 
 
 

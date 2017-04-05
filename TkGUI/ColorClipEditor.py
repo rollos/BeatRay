@@ -46,7 +46,7 @@ class ColorClipsEditor(tk.LabelFrame):
 
 
     def color_type_change(self, *args):
-        self.message_view("COLOR_CLIP_TYPE_UPDATED")
+        self.message_view("CLIP_TYPE_UPDATED")
         self.set_active_args_window()
 
 
@@ -132,6 +132,8 @@ class ColorClipsEditor(tk.LabelFrame):
         if clip is None:
             self.grid_forget()
         else:
+            self.type_var.set(clip.type)
+
             self.location_boxes.set_end(clip.clip_end)
             self.location_boxes.set_length(clip.clip_length)
             self.location_boxes.set_start(clip.clip_start)

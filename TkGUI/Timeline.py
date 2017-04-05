@@ -1,3 +1,4 @@
+import random
 import tkinter as tk
 from Utils import *
 from SceneModel import ClipModel, ColorClipModel, MovementClipModel
@@ -118,7 +119,13 @@ class ColorTimeline(Timeline):
 
     def draw_clip(self, clip:ColorClipModel):
         c = Clip(self, self.canvas, clip)
-        self.clips.append()
+        self.clips.append(c)
+
+
+
+
+
+
 
 class Clip():
     def __init__(self,parent, canvas:tk.Canvas, clip):
@@ -146,7 +153,10 @@ class Clip():
 
         coords = (self.start_pix, 0, self.end_pix, self.height)
 
-        self.rect_clip = self.canvas.create_rectangle(*coords, fill="blue")
+
+
+        self.rect_clip = self.canvas.create_rectangle(*coords, fill=clip.color)
+        self.text = self.canvas.create_text(self.start_pix+5, 5, anchor="nw", font=("Courrier", 20), text=clip.type)
 
 
         self.canvas.tag_bind(self.rect_clip, "<ButtonPress-1>", self.on_token_press)
@@ -159,7 +169,7 @@ class Clip():
 
 
 
-        print("click")
+
         #If its a click on the start
         if x < 10:
             self.drag = START_DRAG
@@ -172,10 +182,16 @@ class Clip():
             self.drag = CLIP_DRAG
             self.drag_data = event.x
 
+
     def on_token_release(self,event):
 
-        self.message_view("SELECTED_CLIP_RESIZED", value=self.get_start_end_ticks())
-        self.drag = NO_DRAG
+
+
+        if self.drag != NO_DRAG:
+            self.message_view("CLIP_RESIZED", value=(self.clip.id, self.get_start_end_ticks()))
+            self.drag = NO_DRAG
+
+        self.select_clip()
 
     def on_token_motion(self,event):
 
@@ -222,6 +238,8 @@ class Clip():
     def resize(self):
         self.length = self.end_pix - self.start_pix
 
+
+        self.canvas.coords(self.text, self.start_pix+5, 5)
         self.canvas.coords(self.rect_clip, self.start_pix, 0, self.end_pix, self.parent.get_canvas_height())
 
 

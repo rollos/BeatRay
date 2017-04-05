@@ -1,3 +1,5 @@
+import random
+
 from Utils import *
 
 
@@ -141,6 +143,8 @@ class LightModel():
         self.shape = DEF_SHAPE
         self.clip_id_counter = 0
 
+
+
         self.selected_clip_id = None
 
         self.movement_clips = {}
@@ -194,7 +198,9 @@ class LightModel():
         return self.get_clip(clip_id=self.selected_clip_id)
 
 class ClipModel():
-    def __init__(self, parent_light):
+    def __init__(self, parent_light, id):
+
+        self.id = id
 
         self.type = None
         self.parent_light = parent_light
@@ -202,6 +208,12 @@ class ClipModel():
         self.clip_length = DEF_CLIP_LENGTH
         self.clip_start = DEF_CLIP_START
         self.clip_end = self.clip_start + self.clip_length
+
+        de = ("%02x" % random.randint(0, 255))
+        re = ("%02x" % random.randint(0, 255))
+        we = ("%02x" % random.randint(0, 255))
+        ge = "#"
+        self.color = ge + de + re + we
 
     def send_update(self, message):
         self.parent_light.send_update(message)
@@ -220,7 +232,8 @@ class ClipModel():
         self.clip_end = value["end"]
         self.clip_length = self.clip_end - self.clip_start
 
-        self.send_update("SELECTED_CLIP_RESIZED")
+        if self.id == self.parent_light.selected_clip_id:
+            self.send_update("SELECTED_CLIP_RESIZED")
 
 
 
@@ -237,9 +250,9 @@ class ClipModel():
 class MovementClipModel(ClipModel):
 
     def __init__(self, parent, id):
-        super().__init__(parent)
+        super().__init__(parent, id)
 
-        self.id = id
+
 
         self.type = DEF_MOVEMENT_CLIP_TYPE
         self.static_location = DEF_STATIC_LOCATION
@@ -311,8 +324,7 @@ class MovementClipModel(ClipModel):
 class ColorClipModel(ClipModel):
 
     def __init__(self,parent:LightModel, id):
-        super().__init__(parent)
-        self.id = id
+        super().__init__(parent, id)
 
         self.type = DEF_COLOR_CLIP_TYPE
         self.static_color = DEF_STATIC_COLOR
@@ -330,6 +342,7 @@ class ColorClipModel(ClipModel):
 
     def static_color_updated(self, color):
         self.static_color = color
+        self.color = convert_to_color(*color)
         self.send_update("STATIC_COLOR_UPDATED")
 
 
@@ -356,4 +369,5 @@ class ColorClipModel(ClipModel):
     def to_color_updated(self,color):
         self.to_color = color
         self.send_update("TO_COLOR_UPDATED")
+
 

@@ -35,7 +35,7 @@ class MovementClipEditor(tk.LabelFrame):
         self.type_selection.pack()
 
         type_frame.grid(row=0,column=0)
-        self.type_var.trace('w', self.set_active_args_window)
+        self.type_var.trace('w', self.clip_type_updated)
 
         self.set_active_args_window(message=True)
 
@@ -140,6 +140,8 @@ class MovementClipEditor(tk.LabelFrame):
         if clip is None:
             self.grid_forget()
         else:
+            self.type_var.set(clip.type)
+
             self.location_boxes.set_end(clip.clip_end)
             self.location_boxes.set_length(clip.clip_length)
             self.location_boxes.set_start(clip.clip_start)
@@ -162,4 +164,7 @@ class MovementClipEditor(tk.LabelFrame):
 
             self.grid(row=1, column=0, sticky="NSEW")
 
+    def clip_type_updated(self, *args):
+        self.message_view("CLIP_TYPE_UPDATED")
+        self.set_active_args_window()
 

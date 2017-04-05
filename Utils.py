@@ -180,9 +180,9 @@ class ColorSelector(tk.Frame):
         self.b_var.trace('w', self.callback)
 
         #Make the sliders for each color
-        self.r_slider = tk.Scale(r_frame, from_=0, to_=256, orient=tk.HORIZONTAL, variable=self.r_var)
-        self.g_slider = tk.Scale(g_frame, from_=0, to_=256, orient=tk.HORIZONTAL, variable = self.g_var)
-        self.b_slider = tk.Scale(b_frame, from_=0, to_=256, orient=tk.HORIZONTAL, variable = self.b_var)
+        self.r_slider = tk.Scale(r_frame, from_=0, to_=255, orient=tk.HORIZONTAL, variable=self.r_var)
+        self.g_slider = tk.Scale(g_frame, from_=0, to_=255, orient=tk.HORIZONTAL, variable = self.g_var)
+        self.b_slider = tk.Scale(b_frame, from_=0, to_=255, orient=tk.HORIZONTAL, variable = self.b_var)
 
 
         #Pack the sliders and labels into their frames
@@ -223,3 +223,10 @@ def ticks_to_bars(ticks):
 def bars_to_ticks(bars):
     return beats_to_tick(bars_to_beats(bars))
 
+def convert_to_color(r,g,b):
+    de = ("%02x" % r)
+    re = ("%02x" % g)
+    we = ("%02x" % b)
+    ge = "#"
+
+    return ge + de + re + we

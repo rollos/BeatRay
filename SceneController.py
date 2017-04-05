@@ -114,8 +114,8 @@ class SceneController():
         elif message == "S_END_DEGREES_UPDATED":
             self.scene_model.get_selected_clip().s_end_degrees_updated(self.scene_view.get_s_end_degrees())
 
-        elif message == "SELECTED_CLIP_RESIZED":
-            self.scene_model.get_selected_clip().clip_resized(value)
+        elif message == "CLIP_RESIZED":
+            self.scene_model.get_selected_light().get_clip(value[0]).clip_resized(value[1])
 
         elif message == "WINDOW_RESIZE":
             self.update_timelines()
@@ -136,13 +136,19 @@ class SceneController():
             self.scene_view.set_scene_length(self.scene_model.scene_length)
 
         elif message == "CLIP_START_UPDATED":
-            self.update_timelines()
+             self.update_timelines()
 
         elif message == "CLIP_END_UPDATED":
+             self.update_timelines()
+
+        elif message == "CLIP_TYPE_UPDATED":
             self.update_timelines()
 
         elif message == "SELECTED_CLIP_RESIZED":
             self.scene_view.display_clip(self.scene_model.get_selected_clip())
+
+        elif message == "STATIC_COLOR_UPDATED":
+            self.update_timelines()
 
     def update_timelines(self):
         self.scene_view.update_timelines(self.scene_model.get_selected_light())
