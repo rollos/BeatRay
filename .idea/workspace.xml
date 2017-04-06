@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c014613-b656-4c56-9b6e-30a1d8e267c8" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/PygameStuff/ObjectColors.py" afterPath="$PROJECT_DIR$/ObjectColors.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClipModels.py" afterPath="$PROJECT_DIR$/ClipModels.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Driver.py" afterPath="$PROJECT_DIR$/Driver.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ObjectMovements.py" afterPath="$PROJECT_DIR$/ObjectMovements.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Render.py" afterPath="$PROJECT_DIR$/Render.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SceneController.py" afterPath="$PROJECT_DIR$/SceneController.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SceneModel.py" afterPath="$PROJECT_DIR$/SceneModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SceneView.py" afterPath="$PROJECT_DIR$/SceneView.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TkGUI/PlayControls.py" afterPath="$PROJECT_DIR$/TkGUI/PlayControls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TkGUI/Timeline.py" afterPath="$PROJECT_DIR$/TkGUI/Timeline.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Utils.py" afterPath="$PROJECT_DIR$/Utils.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -216,6 +205,7 @@
   </component>
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -752,7 +742,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491458301233</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Static location and colors are at basic function in the timeline">
+      <created>1491520123372</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1491520123372</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -823,7 +820,8 @@
     <MESSAGE value="Clips have movement and updating" />
     <MESSAGE value="Clips are functional, although missing a lot of features. Made color_clips change color with the static color represented&#10;" />
     <MESSAGE value="The clips kinda display whats in them on the screen. Only with static location, &#10;and the values don't update when they are updated in the clip editor." />
-    <option name="LAST_COMMIT_MESSAGE" value="The clips kinda display whats in them on the screen. Only with static location, &#10;and the values don't update when they are updated in the clip editor." />
+    <MESSAGE value="Static location and colors are at basic function in the timeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="Static location and colors are at basic function in the timeline" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
