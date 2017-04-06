@@ -1,8 +1,34 @@
 
 from PygameStuff.FunctionScheduler import *
+from Utils import *
+from LightFrame import *
+
+def color_render_to_frames(clip):
+    frame_length = beats_to_tick(clip.clip_length)
+    light_size = clip.parent_light.size
+    shape = clip.parent_light.shape
+    start_frame = beats_to_tick(clip.clip_start)
 
 
+    if clip.type == "None":
+        return make_static_color_frames(frame_length, light_size, shape, clip.color, start_frame)
+    elif clip.type == "Blink":
+        pass
+    elif clip.type == "Fade":
+        pass
 
+def make_static_color_frames(frame_length, light_size, type, color, start_frame):
+    frames = {}
+
+    start_frame = int(round(start_frame))
+    end_frame = start_frame + int(round(frame_length))
+
+    for frame in range(start_frame, end_frame):
+        model = LightFrameModel(light_size, type, color=color)
+        print(frame)
+        frames[frame] = model
+
+    return frames
 # Return a schedule that makes an object blink
 # between color1 and color2
 #

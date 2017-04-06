@@ -10,7 +10,7 @@ from Utils import _create_circle
 
 if __name__ == "__main__":
     root = tk.Tk()
-    w, h = root.winfo_screenwidth(), root.winfo_screenheight()
+    w, h = root.winfo_screenwidth(), root.winfo_screenheight()-100
     root.geometry("%dx%d+0+0" % (w, h))
 
     app = MainApp.MainApplication(root)

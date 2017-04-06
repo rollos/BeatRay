@@ -21,7 +21,7 @@ class SceneModel():
         self.canvas = None
 
         self.bpm = DEF_BPM
-        self.scene_length = 16
+        self.scene_length = DEF_SCENE_LENGTH
         self.selected_light_id = None
 
         self.play_state = PAUSE_STATE
@@ -128,8 +128,8 @@ class SceneModel():
         if self.play_state == PLAY_STATE:
             self.play_state = PAUSE_STATE
 
-        self.scrub_time = 0
-        self.notify_observers("PLAY_STATE_UPDATE")
+            self.update_scrubber(0)
+            self.notify_observers("PLAY_STATE_UPDATE")
 
     def select_light(self, light_id):
         if light_id in self.lights.keys():
@@ -211,6 +211,7 @@ class LightModel():
         self.rendered_light = RenderedLight(self, parent_scene.canvas)
 
     def update_display_light(self, scrubber):
+        self.render_schedules()
         self.rendered_light.move_light_to_scrubber(scrubber)
 
     def select_clip(self, clip_id):

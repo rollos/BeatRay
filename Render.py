@@ -32,6 +32,14 @@ class RenderedLight:
         x, y = self.current_position
         self.canvas.coords(self.light_id, x - size, y - size, x + size, y + size)
 
+    def color_light(self,color):
+        if type(color) is tuple:
+            self.canvas.itemconfig(self.light_id, fill=convert_to_color(*color))
+        elif type(color) is str:
+            self.canvas.itemconfig(self.light_id, fill=color)
+        else:
+            raise ValueError
+
     def render_clips(self):
         movement_clips = [render_clip(clip) for clip in self.light.movement_clips]
         color_clips = [render_clip(clip) for clip in self.light.color_clips]
@@ -39,11 +47,18 @@ class RenderedLight:
         self.frames = full_render(movement_clips, color_clips)
 
     def move_light_to_scrubber(self, scrubber_val):
-        frame = self.frames[scrubber_val]
-        x,y = frame.position
-        radius = frame.radius
+        try:
+            frame = self.frames[scrubber_val]
+            x, y = frame.position
+            radius = frame.radius
 
-        self.move_light(x,y,radius)
+            self.move_light(x, y, radius)
+            self.color_light(frame.color)
+        except:
+            self.color_light("black")
+
+
+
 
     def move_light(self, x,y,size):
         self.canvas.coords(self.light_id, x - size, y - size, x + size, y + size)
@@ -55,8 +70,15 @@ class RenderedLight:
             for frame in clip_frames:
                 self.frames[frame] = clip_frames[frame]
 
+        for clip_frames in color_frames:
+            for frame in clip_frames:
+                if frame in self.frames:
+                    self.frames[frame].color = clip_frames[frame].color
+                else:
+                    self.frames[frame] = clip_frames[frame]
 
-        self.fill_empty_frames()
+
+      #  self.fill_empty_frames()
 
         pass
 

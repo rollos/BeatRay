@@ -41,14 +41,15 @@ def tester():
 
 def move_render_to_frames(clip):
 
-    frame_length = bars_to_ticks(clip.clip_length)
+    frame_length = beats_to_tick(clip.clip_length)
     light_size = clip.parent_light.size
     type = clip.parent_light.shape
-    start_frame = bars_to_ticks(clip.clip_start)
+    start_frame = beats_to_tick(int(round(clip.clip_start)))
+    end_frame = start_frame + int(round(frame_length))
 
 
     if clip.type == "None":
-        return make_static_frames(frame_length, light_size, type, clip.static_location, start_frame)
+        return make_static_frames(start_frame, end_frame, light_size, type, clip.static_location)
 
     elif clip.type == "Line":
         return make_line_frames(frame_length, light_size, type, start_frame)
@@ -58,11 +59,9 @@ def move_render_to_frames(clip):
     elif clip.type == "Spiral":
         return make_spiral_frames(clip)
 
-def make_static_frames(frame_length, light_size, type, position, start_frame):
+def make_static_frames(start_frame,end_frame, light_size, type, position):
     frames = {}
 
-    start_frame = int(round(start_frame))
-    end_frame = start_frame + int(round(frame_length))
 
     for frame in range(start_frame, end_frame):
         model = LightFrameModel(light_size, type, position=position)

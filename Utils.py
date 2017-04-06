@@ -4,7 +4,7 @@ import tkinter as tk
 
 #Default Values
 DEF_BPM = 120
-DEF_SCENE_LENGTH = 16   #Bars
+DEF_SCENE_LENGTH = 16*24   #Beats to ticks
 
 DEF_SHAPE = "Circle"
 
@@ -234,3 +234,6 @@ def convert_to_color(r,g,b):
 
 def _create_circle(self, x, y, r, **kwargs):
     return self.create_oval(x-r, y-r, x+r, y+r, **kwargs)
+
+
+

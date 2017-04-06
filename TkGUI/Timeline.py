@@ -34,6 +34,10 @@ class TimelineContainer(tk.Frame):
     def message_view(self, message, value=None):
         self.parent.message_view(message, value)
 
+    def update_scrubbers(self, scrubber_frame):
+        self.move_timeline.move_scrubber(scrubber_frame)
+        self.color_timeline.move_scrubber(scrubber_frame)
+
 
 
 
@@ -44,13 +48,19 @@ class Timeline(tk.Frame):
         super().__init__(parent, height=200, relief=tk.GROOVE, borderwidth=5)
 
         self.canvas = tk.Canvas(self, height = 50, background= "GREY")
+
+        coords = (0, 0, 100, 100)
+
+        self.scrubber = Scrubber(self, self.canvas)
+
         self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
 
 
 
-        self.length=DEF_SCENE_LENGTH
+        self.length= None
 
         self.clips = []
+
 
         self.canvas.bind("<Configure>", lambda x: self.message_view("WINDOW_RESIZE"))
 
@@ -62,6 +72,10 @@ class Timeline(tk.Frame):
 
     def draw_all_clips(self, clip_dict:dict):
         self.canvas.delete("all")
+
+        self.scrubber.draw_scrub()
+
+        self.canvas.tag_raise(self.scrubber.id)
 
         if len(clip_dict) > 0:
             for clip in clip_dict.values():
@@ -81,9 +95,14 @@ class Timeline(tk.Frame):
         pix_width = self.get_canvas_width()
 
         #Length in bars
-        frame_length = beats_to_tick(self.length)
 
-        return pix_width/frame_length
+
+        return pix_width/self.length
+
+    def move_scrubber(self, scrubber_frame):
+        scrub_pix = self.get_pix_per_frame() * scrubber_frame
+
+        self.scrubber.set_scrub_time(scrub_pix)
 
 
     def message_view(self, message, value=None):
@@ -125,7 +144,25 @@ class ColorTimeline(Timeline):
 
 
 
+class Scrubber():
+    def __init__(self, parent, canvas:tk.Canvas):
+        self.canvas = canvas
+        self.parent = parent
 
+        self.coords = (5,0,5,100)
+        self.draw_scrub()
+
+        self.id = None
+        self.canvas.update()
+
+    def draw_scrub(self):
+        self.id = self.canvas.create_line(*self.coords, fill="black", width=1)
+        self.canvas.tag_raise(self.id)
+
+    def set_scrub_time(self, scrub_pix):
+        self.coords = (scrub_pix+5, 0, scrub_pix+5, 100)
+        self.canvas.tag_raise(self.id)
+        self.canvas.coords(self.id, *self.coords)
 
 
 

@@ -20,7 +20,7 @@ class PlayControls(tk.Frame):
         self.bpm_entry = EntryBoxWithFrame(self, "BPM", width=3,  callback=lambda x: self.message_view("BPM_UPDATE"))
 
         #Make the scene length text box
-        self.scene_length_entry = EntryBoxWithFrame(self, "Scene Length", width=3, callback=lambda x: self.message_view("SCENELENGTH_UPDATE"))
+        self.scene_length_entry = EntryBoxWithFrame(self, "Scene Length", width=3, callback=lambda x: self.message_view("SCENE_LENGTH_UPDATE"))
 
         self.playButton.pack(side=tk.LEFT)
         stopButton.pack(side=tk.LEFT)

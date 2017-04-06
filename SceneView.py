@@ -30,7 +30,7 @@ class SceneView():
         self.gui.play_controls.update_play_button(state)
 
     def get_scene_length(self):
-        return self.gui.play_controls.scene_length_entry.get_entry()
+        return beats_to_tick(self.gui.play_controls.scene_length_entry.get_entry())
 
 
     def get_size(self):
@@ -147,8 +147,15 @@ class SceneView():
         self.gui.timeline.move_timeline.draw_all_clips(selected_light.movement_clips)
 
     def update_lights(self, lights, scrub_time):
-        for light in lights:
-            pass
+        for light in lights.values():
+            light.rendered_light.move_light_to_scrubber(scrub_time)
+
+    def update_scrubber(self, scrub_time):
+        self.gui.timeline.update_scrubbers(scrub_time)
+
+    def update_scene_length(self, scene_length):
+        self.gui.timeline.set_length(scene_length)
+        self.gui.play_controls.scene_length_entry.set_entry(ticks_to_beat(scene_length))
 
 
 

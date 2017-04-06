@@ -1,4 +1,5 @@
 from ObjectMovements import move_render_to_frames
+from ObjectColors import color_render_to_frames
 from Utils import*
 import random
 
@@ -155,6 +156,9 @@ class ColorClipModel(ClipModel):
         self.from_color = DEF_FROM_COLOR
         self.to_color = DEF_TO_COLOR
 
+    def render_clip(self):
+        self.clip_frames = color_render_to_frames(self)
+        return self.clip_frames
 
     def type_updated(self, type):
         self.type = type

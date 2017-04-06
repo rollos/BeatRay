@@ -13,6 +13,9 @@ class SceneController():
 
         self.scene_model.canvas = self.scene_view.gui.display_window.canvas
 
+
+        self.scene_view.update_scene_length(self.scene_model.scene_length)
+
         SceneModel.new_light()
 
         SceneModel.main_loop(root)
@@ -105,6 +108,7 @@ class SceneController():
         #MOVEMENT CLIP MESSAGES
         elif message == "STATIC_LOCATION_UPDATED":
             self.scene_model.get_selected_clip().static_location_updated(self.scene_view.get_static_location())
+            self.scene_model.update_display_lights()
         elif message == "START_LOCATION_UPDATED":
             self.scene_model.get_selected_clip().start_location_updated(self.scene_view.get_start_location())
         elif message == "END_LOCATION_UPDATED":
@@ -128,6 +132,7 @@ class SceneController():
 
         elif message == "CLIP_RESIZED":
             self.scene_model.get_selected_light().get_clip(value[0]).clip_resized(value[1])
+            self.scene_model.get_selected_light().render_schedules()
 
 
         elif message == "WINDOW_RESIZE":
@@ -163,8 +168,9 @@ class SceneController():
         elif message == "STATIC_COLOR_UPDATED":
             self.update_timelines()
 
-        elif message == "SCRUB_TIME_UDPATED":
+        elif message == "SCRUB_TIME_UPDATED":
             self.scene_view.update_lights(self.scene_model.lights, self.scene_model.scrub_time)
+            self.scene_view.update_scrubber(self.scene_model.scrub_time)
 
 
 
