@@ -1,14 +1,83 @@
 from math import *
 
-from PygameStuff.FunctionScheduler import *
+import time
+
+from SceneModel import *
+from Utils import _create_circle
+from Utils import *
+from LightFrame import *
+
+
+
+
+def tester():
+    root = tk.Tk()
+    canvas = tk.Canvas(root, width=200, height=200, borderwidth=0, highlightthickness=0, bg="black")
+    canvas.grid()
+
+    tk.Canvas.create_circle = _create_circle
+
+
+    frames = make_line_frames(20, 20, "Circle", (0, 0), (100, 100))
+
+
+    frame_counter = 0
+
+    while True:
+
+        time.sleep(.1)
+
+        canvas.delete("all")
+        try:
+            frames[frame_counter].draw(canvas)
+        except:
+            break
+
+
+        frame_counter += 1
+        root.update_idletasks()
+        root.update()
+
+
+def move_render_to_frames(clip):
+
+    frame_length = bars_to_ticks(clip.clip_length)
+    light_size = clip.parent_light.size
+    type = clip.parent_light.shape
+    start_frame = bars_to_ticks(clip.clip_start)
+
+
+    if clip.type == "None":
+        return make_static_frames(frame_length, light_size, type, clip.static_location, start_frame)
+
+    elif clip.type == "Line":
+        return make_line_frames(frame_length, light_size, type, start_frame)
+
+    elif clip.type == "Circle":
+        return make_circle_frames(clip)
+    elif clip.type == "Spiral":
+        return make_spiral_frames(clip)
+
+def make_static_frames(frame_length, light_size, type, position, start_frame):
+    frames = {}
+
+    start_frame = int(round(start_frame))
+    end_frame = start_frame + int(round(frame_length))
+
+    for frame in range(start_frame, end_frame):
+        model = LightFrameModel(light_size, type, position=position)
+        print(frame)
+        frames[frame] = model
+
+    return frames
 
 
 # Move the object in a straight line
 # From the current location of the object to the pixels designated by destX, destY
 # move_ticks will set the velocity
 # Returns a Schedule with the correct move at each tick
-def move_light_straight(light, start, dest, move_ticks):
-    s = MovementSchedule()
+def make_line_frames(frame_length, light_size, type, start, dest):
+    frames = {}
 
     x, y = start
     # Calculate the distance between the current position and the final position on each axis
@@ -17,24 +86,27 @@ def move_light_straight(light, start, dest, move_ticks):
     y_distance = dest[1] - y
 
     # The distance per tick
-    tick_dist_x = x_distance / move_ticks
-    tick_dist_y = y_distance / move_ticks
+    tick_dist_x = x_distance / frame_length
+    tick_dist_y = y_distance / frame_length
 
     # Add a new task to move the object for every tick
-    for i in range(move_ticks+1):
+    for i in range(frame_length):
 
-        next_task = Task(light.move, (ceil(x), ceil(y)))  # Create a task that calls light.move(x,y)
-        s.add_task(next_task)  # Add it to the schedule
+        model = LightFrameModel(light_size, type, position=(x,y))
+        frames[i] = model
+
         x = x + tick_dist_x
         y += tick_dist_y
 
-    return s
+    return frames
+
+
 
 
 # Move an object in a circle around a center of rotation
 # The radius of the path is the distance between the object and the center point when the function is called
 # Degrees of rotation determines the distance around the circle the
-def move_light_circle(light, center_of_rotation, degrees_of_rotation, move_ticks):
+def make_circle_frames(light, center_of_rotation, degrees_of_rotation, move_ticks):
     # Calculate the radius of the circle
     radius = get_distance(center_of_rotation, light.location)
 
@@ -63,7 +135,7 @@ def move_light_circle(light, center_of_rotation, degrees_of_rotation, move_ticks
 #Move the light in a spiral around a center of rotation.
 #The initial radius is the distance between the center of rotation and the light
 #
-def move_light_spiral(light, center_of_rotation, end_radius, degrees_of_rotation, move_ticks):
+def make_spiral_frames(light, center_of_rotation, end_radius, degrees_of_rotation, move_ticks):
     # Calculate the radius of the circle
     radius = get_distance(center_of_rotation, light.location)
 
@@ -134,3 +206,9 @@ def get_dist_xy(point1, point2):
     y_len = point1[1] - point2[1]
 
     return (x_len,y_len)
+
+
+
+
+if __name__ == "__main__":
+    tester()

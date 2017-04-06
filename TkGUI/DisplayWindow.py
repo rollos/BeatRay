@@ -6,7 +6,9 @@ class DisplayWindow(tk.Frame):
     def __init__(self,parent):
         super().__init__(parent, borderwidth=0, width=200, height=200)
         self.parent = parent
+        self.canvas = None
         self.initialize()
+
 
     def initialize(self):
         self.content_frame = tk.Frame(self)
@@ -39,3 +41,7 @@ def set_aspect(content_frame, pad_frame, aspect_ratio):
             width=desired_width, height=desired_height)
 
     pad_frame.bind("<Configure>", enforce_aspect_ratio)
+
+
+
+

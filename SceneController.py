@@ -3,13 +3,25 @@ from SceneModel import *
 from SceneView import *
 
 class SceneController():
-    def __init__(self, SceneModel: SceneModel, SceneView: SceneView):
+    def __init__(self, SceneModel: SceneModel, SceneView: SceneView, root:tk.Tk):
         self.scene_model = SceneModel
         self.scene_view = SceneView
 
         self.scene_model.register_observer(self)
 
         self.scene_view.register_observer(self)
+
+        self.scene_model.canvas = self.scene_view.gui.display_window.canvas
+
+        SceneModel.new_light()
+
+        SceneModel.main_loop(root)
+
+
+
+
+
+
 
 
     def play_pressed(self):
@@ -117,6 +129,7 @@ class SceneController():
         elif message == "CLIP_RESIZED":
             self.scene_model.get_selected_light().get_clip(value[0]).clip_resized(value[1])
 
+
         elif message == "WINDOW_RESIZE":
             self.update_timelines()
 
@@ -150,7 +163,13 @@ class SceneController():
         elif message == "STATIC_COLOR_UPDATED":
             self.update_timelines()
 
+        elif message == "SCRUB_TIME_UDPATED":
+            self.scene_view.update_lights(self.scene_model.lights, self.scene_model.scrub_time)
+
+
+
     def update_timelines(self):
         self.scene_view.update_timelines(self.scene_model.get_selected_light())
+
 
 

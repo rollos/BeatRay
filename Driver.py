@@ -3,6 +3,8 @@ import SceneModel as m
 import SceneController as c
 import SceneView as v
 import tkinter as tk
+from Utils import _create_circle
+
 
 
 
@@ -17,6 +19,7 @@ if __name__ == "__main__":
 
   #  app.title("MainGUI")
 
+    tk.Canvas.create_circle = _create_circle
 
 
 
@@ -26,9 +29,5 @@ if __name__ == "__main__":
 
     app.set_view(view)
 
-    controller = c.SceneController(model, view)
+    controller = c.SceneController(model, view, root)
 
-    model.new_light()
-
-
-    root.mainloop()

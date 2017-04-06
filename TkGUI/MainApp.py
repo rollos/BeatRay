@@ -37,8 +37,8 @@ class MainApplication(tk.Frame):
         self.play_controls = PC.PlayControls(self)
         self.play_controls.grid(column=1, row=0, columnspan = 2, sticky='EW')
 
-        self.pygame_window = DW.DisplayWindow(self)
-        self.pygame_window.grid(column=1,row=1, sticky='NSEW')
+        self.display_window = DW.DisplayWindow(self)
+        self.display_window.grid(column=1, row=1, sticky='NSEW')
 
         self.timeline = TL.TimelineContainer(self)
         self.timeline.grid(column=1,row=2, sticky='NSEW')

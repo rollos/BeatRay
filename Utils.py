@@ -14,7 +14,7 @@ DEF_CLIP_START = 0
 
 DEF_MOVEMENT_CLIP_TYPE = "None"
 
-DEF_STATIC_LOCATION = (.5, .5)
+DEF_STATIC_LOCATION = (200, 200)
 DEF_START_LOCATION = (0, 0)
 
 DEF_END_LOCATION = (1, 1)
@@ -230,3 +230,7 @@ def convert_to_color(r,g,b):
     ge = "#"
 
     return ge + de + re + we
+
+
+def _create_circle(self, x, y, r, **kwargs):
+    return self.create_oval(x-r, y-r, x+r, y+r, **kwargs)

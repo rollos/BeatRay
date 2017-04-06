@@ -1,7 +1,8 @@
 from TkGUI import *
 from TkGUI.MainApp import *
 from Utils import *
-from SceneModel import LightModel, ColorClipModel, MovementClipModel
+from SceneModel import LightModel
+from ClipModels import ColorClipModel, MovementClipModel
 
 
 class SceneView():
@@ -144,6 +145,10 @@ class SceneView():
     def update_timelines(self, selected_light:LightModel):
         self.gui.timeline.color_timeline.draw_all_clips(selected_light.color_clips)
         self.gui.timeline.move_timeline.draw_all_clips(selected_light.movement_clips)
+
+    def update_lights(self, lights, scrub_time):
+        for light in lights:
+            pass
 
 
 

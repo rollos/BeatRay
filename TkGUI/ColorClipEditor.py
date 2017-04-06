@@ -1,5 +1,5 @@
 from Utils import *
-from SceneModel import ColorClipModel
+from ClipModels import ColorClipModel
 
 
 
@@ -149,7 +149,6 @@ class ColorClipsEditor(tk.LabelFrame):
             self.to_color_selector.set_color(clip.to_color)
 
             self.grid(row=1, column=0, sticky="NSEW")
-
 
 
 

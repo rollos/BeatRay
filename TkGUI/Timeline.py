@@ -1,7 +1,9 @@
 import random
 import tkinter as tk
 from Utils import *
-from SceneModel import ClipModel, ColorClipModel, MovementClipModel
+from SceneModel import SceneModel, LightModel
+
+from ClipModels import ClipModel, ColorClipModel, MovementClipModel
 
 from math import floor
 
