@@ -74,7 +74,7 @@ class SceneModel():
 
 
     def render_schedules(self):
-        for light in self.lights:
+        for light in self.lights.values():
             light.render_schedules()
 
     #Enable accesing lights by their key
@@ -109,13 +109,16 @@ class SceneModel():
     def set_BPM(self, BPM):
         self.bpm = BPM
         self.notify_observers("BPM_UPDATE")
-        print("BPM UPDATED:{}".format(self.bpm))
+
 
     def set_scene_length(self, length):
         self.scene_length = length
         self.notify_observers("SCENE_LENGTH_UPDATE")
 
     def switch_play_state(self):
+
+        self.render_schedules()
+
         if self.play_state == PAUSE_STATE:
             self.play_state = PLAY_STATE
 
@@ -211,7 +214,7 @@ class LightModel():
         self.rendered_light = RenderedLight(self, parent_scene.canvas)
 
     def update_display_light(self, scrubber):
-        self.render_schedules()
+        #self.render_schedules()
         self.rendered_light.move_light_to_scrubber(scrubber)
 
     def select_clip(self, clip_id):
@@ -235,6 +238,7 @@ class LightModel():
 
         self.color_clips[self.clip_id_counter] = color_clip
         self.select_clip(self.clip_id_counter)
+        self.render_schedules()
         self.clip_id_counter += 1
 
     def update_size(self, size):

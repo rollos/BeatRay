@@ -30,7 +30,7 @@ class ClipModel():
         self.send_update("CLIP_LENGTH_UPDATED")
 
     def clip_start_updated(self, start):
-        print(start)
+      #  print(start)
         self.clip_start = start
         self.send_update("CLIP_START_UPDATED")
 

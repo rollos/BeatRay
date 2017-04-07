@@ -41,6 +41,8 @@ def tester():
 
 def move_render_to_frames(clip):
 
+    print("making_schedules")
+
     frame_length = beats_to_tick(clip.clip_length)
     light_size = clip.parent_light.size
     type = clip.parent_light.shape
@@ -52,12 +54,18 @@ def move_render_to_frames(clip):
         return make_static_frames(start_frame, end_frame, light_size, type, clip.static_location)
 
     elif clip.type == "Line":
-        return make_line_frames(frame_length, light_size, type, start_frame)
+        return make_line_frames(start_frame,end_frame, frame_length, light_size,
+                                type, clip.start_location, clip.end_location)
 
     elif clip.type == "Circle":
-        return make_circle_frames(clip)
+        return make_circle_frames(start_frame, end_frame, frame_length,
+                                  light_size, type, clip.c_center_location,
+                                  clip.c_start_degrees, clip.c_end_degrees, clip.c_radius)
     elif clip.type == "Spiral":
-        return make_spiral_frames(clip)
+        return make_spiral_frames(start_frame, end_frame, frame_length,
+                                  light_size, type, clip.s_center_location,
+                                  clip.s_start_degrees, clip.s_end_degrees,
+                                  clip.s_start_radius, clip.s_end_radius)
 
 def make_static_frames(start_frame,end_frame, light_size, type, position):
     frames = {}
@@ -65,7 +73,6 @@ def make_static_frames(start_frame,end_frame, light_size, type, position):
 
     for frame in range(start_frame, end_frame):
         model = LightFrameModel(light_size, type, position=position)
-        print(frame)
         frames[frame] = model
 
     return frames
@@ -75,7 +82,7 @@ def make_static_frames(start_frame,end_frame, light_size, type, position):
 # From the current location of the object to the pixels designated by destX, destY
 # move_ticks will set the velocity
 # Returns a Schedule with the correct move at each tick
-def make_line_frames(frame_length, light_size, type, start, dest):
+def make_line_frames(start_frame, end_frame, frame_length, light_size, type, start, dest):
     frames = {}
 
     x, y = start
@@ -89,12 +96,12 @@ def make_line_frames(frame_length, light_size, type, start, dest):
     tick_dist_y = y_distance / frame_length
 
     # Add a new task to move the object for every tick
-    for i in range(frame_length):
+    for i in range(start_frame,end_frame):
 
         model = LightFrameModel(light_size, type, position=(x,y))
         frames[i] = model
 
-        x = x + tick_dist_x
+        x += tick_dist_x
         y += tick_dist_y
 
     return frames
@@ -105,28 +112,33 @@ def make_line_frames(frame_length, light_size, type, start, dest):
 # Move an object in a circle around a center of rotation
 # The radius of the path is the distance between the object and the center point when the function is called
 # Degrees of rotation determines the distance around the circle the
-def make_circle_frames(light, center_of_rotation, degrees_of_rotation, move_ticks):
+def make_circle_frames(start_frame, end_frame, frame_length, light_size, type, center_of_rotation, start_degrees, end_degrees, radius):
     # Calculate the radius of the circle
-    radius = get_distance(center_of_rotation, light.location)
+
+
+    degrees_of_rotation = end_degrees - start_degrees
 
     # print("COR = {}, r = {}".format(center_of_rotation,radius))
     # Calculate the amount of degrees to move each tick
-    tick_dist = radians(degrees_of_rotation / move_ticks)
+    tick_dist = radians(degrees_of_rotation / frame_length)
 
     #print("Degrees/Tick:{}".format(degrees(tick_dist)))
 
-    theta = get_radians_from_point(center_of_rotation, light.location, radius)
+    theta = radians(start_degrees)
 
     # print("Initial theta = {}".format(theta))
 
-    s = MovementSchedule()
+    s = {}
 
-    for x in range(move_ticks+1):
+    for frame in range(start_frame, end_frame):
         theta += tick_dist
         # if x==1:
         #     s.add_task(Task(time.sleep, (2)))
-        next_task = Task(light.move, (get_point_circle(center_of_rotation, radius, theta)))
-        s.add_task(next_task)
+
+        position = get_point_circle(center_of_rotation, radius, theta)
+        next_task = LightFrameModel(light_size, type, position= position)
+
+        s[frame] = next_task
 
     return s
 
@@ -134,29 +146,33 @@ def make_circle_frames(light, center_of_rotation, degrees_of_rotation, move_tick
 #Move the light in a spiral around a center of rotation.
 #The initial radius is the distance between the center of rotation and the light
 #
-def make_spiral_frames(light, center_of_rotation, end_radius, degrees_of_rotation, move_ticks):
+def make_spiral_frames(start_frame, end_frame, frame_length, light_size, type, center_of_rotation, start_degrees, end_degrees, start_radius, end_radius):
     # Calculate the radius of the circle
-    radius = get_distance(center_of_rotation, light.location)
+
+
+    degrees_of_rotation = end_degrees - start_degrees
 
     # print("COR = {}, r = {}".format(center_of_rotation,radius))
     # Calculate the amount of degrees to move each tick
-    rotation_dist = radians(degrees_of_rotation / move_ticks)
-    radius_dist =  (end_radius-radius)/move_ticks
+    rotation_dist = radians(degrees_of_rotation / frame_length)
+    radius_dist =  (end_radius-start_radius)/frame_length
 
     #print("Degrees/Tick:{}".format(degrees(tick_dist)))
 
-    theta = get_radians_from_point(center_of_rotation, light.location, radius)
+    theta = radians(start_degrees)
 
     # print("Initial theta = {}".format(theta))
 
-    s = MovementSchedule()
-
-    for x in range(move_ticks+1):
+    radius = start_radius
+    s = {}
+    for frame in range(start_frame,end_frame):
 
         # if x==1:
         #     s.add_task(Task(time.sleep, (2)))
-        next_task = Task(light.move, (get_point_circle(center_of_rotation, radius, theta)))
-        s.add_task(next_task)
+        position = get_point_circle(center_of_rotation, radius, theta)
+        next_task = LightFrameModel(light_size, type, position=position)
+
+        s[frame] = next_task
 
         theta += rotation_dist
         radius += radius_dist

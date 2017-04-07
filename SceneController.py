@@ -108,27 +108,37 @@ class SceneController():
         #MOVEMENT CLIP MESSAGES
         elif message == "STATIC_LOCATION_UPDATED":
             self.scene_model.get_selected_clip().static_location_updated(self.scene_view.get_static_location())
-            self.scene_model.update_display_lights()
+            self.update_lights_and_sched()
         elif message == "START_LOCATION_UPDATED":
             self.scene_model.get_selected_clip().start_location_updated(self.scene_view.get_start_location())
+            self.update_lights_and_sched()
         elif message == "END_LOCATION_UPDATED":
             self.scene_model.get_selected_clip().end_location_updated(self.scene_view.get_end_locaton())
+            self.update_lights_and_sched()
         elif message == "C_CENTER_LOCATION_UPDATED":
             self.scene_model.get_selected_clip().c_center_location_updated(self.scene_view.get_c_center_location())
+            self.update_lights_and_sched()
         elif message == "C_RADIUS_UPDATED":
             self.scene_model.get_selected_clip().c_radius_updated(self.scene_view.get_c_radius())
+            self.update_lights_and_sched()
         elif message == "C_START_DEGREES_UPDATED":
             self.scene_model.get_selected_clip().c_start_degrees_updated(self.scene_view.get_c_start_degrees())
+            self.update_lights_and_sched()
         elif message == "S_CENTER_LOCATION_UPDATED":
             self.scene_model.get_selected_clip().s_center_location_updated(self.scene_view.get_s_center_location())
+            self.update_lights_and_sched()
         elif message == "S_START_RADIUS_UPDATED":
             self.scene_model.get_selected_clip().s_start_radius_updated(self.scene_view.get_s_start_radius())
+            self.update_lights_and_sched()
         elif message == "S_END_RADIUS_UPDATED":
             self.scene_model.get_selected_clip().s_end_radius_updated(self.scene_view.get_s_end_radius())
+            self.update_lights_and_sched()
         elif message == "S_START_DEGREES_UPDATED":
             self.scene_model.get_selected_clip().s_start_degrees_updated(self.scene_view.get_s_start_degrees())
+            self.update_lights_and_sched()
         elif message == "S_END_DEGREES_UPDATED":
             self.scene_model.get_selected_clip().s_end_degrees_updated(self.scene_view.get_s_end_degrees())
+            self.update_lights_and_sched()
 
         elif message == "CLIP_RESIZED":
             self.scene_model.get_selected_light().get_clip(value[0]).clip_resized(value[1])
@@ -138,6 +148,13 @@ class SceneController():
         elif message == "WINDOW_RESIZE":
             self.update_timelines()
 
+    def update_lights(self):
+        self.scene_model.update_display_lights()
+
+    def update_lights_and_sched(self):
+
+        self.scene_model.render_schedules()
+        self.update_lights()
 
 
     # When the model is updated, update the view
@@ -161,6 +178,7 @@ class SceneController():
 
         elif message == "CLIP_TYPE_UPDATED":
             self.update_timelines()
+
 
         elif message == "SELECTED_CLIP_RESIZED":
             self.scene_view.display_clip(self.scene_model.get_selected_clip())

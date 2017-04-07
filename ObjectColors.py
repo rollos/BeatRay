@@ -25,7 +25,7 @@ def make_static_color_frames(frame_length, light_size, type, color, start_frame)
 
     for frame in range(start_frame, end_frame):
         model = LightFrameModel(light_size, type, color=color)
-        print(frame)
+      #  print(frame)
         frames[frame] = model
 
     return frames

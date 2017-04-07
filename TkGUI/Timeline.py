@@ -149,7 +149,7 @@ class Scrubber():
         self.canvas = canvas
         self.parent = parent
 
-        self.coords = (5,0,5,100)
+        self.coords = (1,0,1,0)
         self.draw_scrub()
 
         self.id = None
@@ -160,7 +160,7 @@ class Scrubber():
         self.canvas.tag_raise(self.id)
 
     def set_scrub_time(self, scrub_pix):
-        self.coords = (scrub_pix+5, 0, scrub_pix+5, 100)
+        self.coords = (scrub_pix+1, 0, scrub_pix+1, 1000)
         self.canvas.tag_raise(self.id)
         self.canvas.coords(self.id, *self.coords)
 
@@ -247,6 +247,8 @@ class Clip():
               self.end_pix = event.x
 
             else:
+
+                pass
                 self.end_pix = self.start_pix + self.parent.get_pix_per_frame()
 
         elif self.drag == CLIP_DRAG:
