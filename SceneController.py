@@ -82,6 +82,7 @@ class SceneController():
             self.scene_model.get_selected_clip().clip_end_updated(self.scene_view.get_clip_end())
         elif message == "CLIP_TYPE_UPDATED":
             self.scene_model.get_selected_clip().clip_type_updated(self.scene_view.get_clip_type())
+            self.update_lights_and_sched()
 
         elif message == "SIZE_UPDATED":
             self.scene_model.size_updated(self.scene_view.get_size())
@@ -92,18 +93,26 @@ class SceneController():
         #COLOR CLIP MESSAGES
         elif message == "STATIC_COLOR_UPDATED":
             self.scene_model.get_selected_clip().static_color_updated(self.scene_view.get_static_color())
+            self.update_lights_and_sched()
         elif message == "COLOR_1_UPDATED":
             self.scene_model.get_selected_clip().color_1_updated(self.scene_view.get_color_1())
+            self.update_lights_and_sched()
         elif message == "COLOR_2_UPDATED":
             self.scene_model.get_selected_clip().color_2_updated(self.scene_view.get_color_2())
+            self.update_lights_and_sched()
         elif message == "COLOR_1_TIME_UPDATED":
             self.scene_model.get_selected_clip().color_1_time_updated(self.scene_view.get_color_1_time())
+            self.update_lights_and_sched()
         elif message == "COLOR_2_TIME_UPDATED":
             self.scene_model.get_selected_clip().color_2_time_updated(self.scene_view.get_color_2_time())
+            self.update_lights_and_sched()
         elif message == "FROM_COLOR_UPDATED":
             self.scene_model.get_selected_clip().from_color_updated(self.scene_view.get_from_color())
+            self.update_lights_and_sched()
         elif message == "TO_COLOR_UPDATED":
             self.scene_model.get_selected_clip().to_color_updated(self.scene_view.get_to_color())
+            self.update_lights_and_sched()
+
 
         #MOVEMENT CLIP MESSAGES
         elif message == "STATIC_LOCATION_UPDATED":

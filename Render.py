@@ -26,7 +26,7 @@ class RenderedLight:
         if self.light.shape == "Circle":
             self.light_id = self.canvas.create_circle(*self.current_position,
                                                       self.light.size,
-                                                      fill="white")
+                                                      fill="black")
 
     def resize_light(self, size):
         x, y = self.current_position

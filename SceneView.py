@@ -65,10 +65,10 @@ class SceneView():
         return self.gui.selected_clip.color_2_selector.get_color()
 
     def get_color_1_time(self):
-        return self.gui.selected_clip.color_1_time.get_entry()
+        return beats_to_tick(self.gui.selected_clip.color_1_time.get_entry())
 
     def get_color_2_time(self):
-        return self.gui.selected_clip.color_2_time.get_entry()
+        return beats_to_tick(self.gui.selected_clip.color_2_time.get_entry())
 
 
     def get_from_color(self):

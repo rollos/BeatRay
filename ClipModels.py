@@ -149,8 +149,8 @@ class ColorClipModel(ClipModel):
 
         self.type = DEF_COLOR_CLIP_TYPE
         self.static_color = DEF_STATIC_COLOR
-        self.color_1_time = DEF_COLOR_1_TIME
-        self.color_2_time = DEF_COLOR_2_TIME
+        self.color_1_time = beats_to_tick(DEF_COLOR_1_TIME)
+        self.color_2_time = beats_to_tick(DEF_COLOR_2_TIME)
         self.color_1 = DEF_COLOR_1
         self.color_2 = DEF_COLOR_2
         self.from_color = DEF_FROM_COLOR
