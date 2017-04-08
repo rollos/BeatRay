@@ -52,9 +52,12 @@ class RenderedLight:
             x, y = frame.position
             radius = frame.radius
 
+            self.current_position = (x,y)
+
             self.move_light(x, y, radius)
             self.color_light(frame.color)
         except:
+            self.canvas.tag_lower(self.light_id)
             self.color_light("black")
 
 

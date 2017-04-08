@@ -2,7 +2,7 @@ import random
 
 import time
 
-from Render import RenderedLight, render_clip
+from Render import RenderedLight
 from Utils import *
 from ClipModels import ColorClipModel, MovementClipModel
 
@@ -34,18 +34,7 @@ class SceneModel():
 
         self.scrub_time = 0
 
-    def main_loop(self, root):
-        while (True):
 
-            root.update_idletasks()
-            root.update()
-
-
-            if self.play_state == PLAY_STATE:
-                #Delay the clock so that it matches the current bpm (in midi  so 24 ticks per beat)
-                self.bpm_delay()
-
-                self.advance_scrubber()
 
 
 
@@ -80,6 +69,29 @@ class SceneModel():
     #Enable accesing lights by their key
     #Example:
     # Light a = self[10]
+
+    def __getstate__(self):
+        d = {}
+        d["bpm"] = self.bpm
+        d["scene_length"] = self.scene_length
+        d["light_id_counter"] = self.light_id_counter
+
+        lights = [light.__getstate__() for light in self.lights.values()]
+        d["lights"] = lights
+        print("test")
+        print(d)
+
+        return d
+
+    def __setstate__(self,state):
+        self.bpm = state["bpm"]
+        self.scene_length = state["scene_length"]
+        self.light_id_counter = state["light_id_counter"]
+
+
+
+
+
     def __getitem__(self, key):
         try:
             return self.lights[key]
@@ -142,14 +154,6 @@ class SceneModel():
         else:
             print("Light does not exist")
 
-    def new_scene(self):
-        raise NotImplementedError
-
-    def load_scene(self):
-        raise NotImplementedError
-
-    def save_scene(self):
-        raise NotImplementedError
 
     def new_light(self):
         light = LightModel(self, self.light_id_counter)
@@ -210,8 +214,10 @@ class LightModel():
 
         self.movement_clips = {}
         self.color_clips = {}
+        self.rendered_light = RenderedLight(self, self.parent_scene.canvas)
 
-        self.rendered_light = RenderedLight(self, parent_scene.canvas)
+
+        print(self.__dict__)
 
     def update_display_light(self, scrubber):
         #self.render_schedules()
@@ -282,6 +288,18 @@ class LightModel():
             color_frames.append(clip.render_clip())
 
         self.rendered_light.update_schedules(move_frames, color_frames)
+
+    def __getstate__(self):
+        d = {}
+        d["id"] = self.id
+        d["size"] = self.size
+        d["shape"] = self.shape
+        d["clip_id_counter"] = self.clip_id_counter
+        d["movement_clips"] = [clip.__getstate__() for clip in self.movement_clips.values()]
+        d["color_clips"] = [clip.__getstate__() for clip in self.color_clips.values()]
+
+        return d
+
 
 
 

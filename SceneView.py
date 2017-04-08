@@ -136,8 +136,19 @@ class SceneView():
             self.gui.selected_clip.display_clip(clip)
 
 
+
+
     def get_clip_type(self):
         return self.gui.selected_clip.type_var.get()
+
+    def set_clip_length(self, value):
+        self.gui.selected_clip.location_boxes.set_length(value)
+
+    def set_clip_start(self, value):
+        self.gui.selected_clip.location_boxes.set_start(value)
+
+    def set_clip_end(self, value):
+        self.gui.selected_clip.location_boxes.set_end(value)
 
     def set_scene_length(self, length):
         self.gui.timeline.set_length(length)
@@ -156,6 +167,12 @@ class SceneView():
     def update_scene_length(self, scene_length):
         self.gui.timeline.set_length(scene_length)
         self.gui.play_controls.scene_length_entry.set_entry(ticks_to_beat(scene_length))
+
+    def get_save_filename(self):
+        return self.gui.saver.asksaveasfilename()
+
+    def get_load_filename(self):
+        return self.gui.save.askloadasfilename()
 
 
 

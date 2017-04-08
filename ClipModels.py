@@ -22,17 +22,24 @@ class ClipModel():
 
         self.frames = None
 
+    def __getstate__(self):
+        d = self.__dict__
+        del d["parent_light"]
+        del d["clip_frames"]
+        return d
 
     def send_update(self, message):
         self.parent_light.send_update(message)
 
     def clip_length_updated(self,length):
         self.clip_length = length
+        self.clip_end = self.clip_start + length
         self.send_update("CLIP_LENGTH_UPDATED")
 
     def clip_start_updated(self, start):
       #  print(start)
         self.clip_start = start
+        self.clip_end = start + self.clip_length
         self.send_update("CLIP_START_UPDATED")
 
     def clip_resized(self, value:dict):
@@ -49,6 +56,7 @@ class ClipModel():
 
     def clip_end_updated(self,end):
         self.clip_end = end
+        self.clip_length = end - self.clip_start
         self.send_update("CLIP_END_UPDATED")
 
     def clip_type_updated(self,type):
@@ -194,4 +202,6 @@ class ColorClipModel(ClipModel):
     def to_color_updated(self,color):
         self.to_color = color
         self.send_update("TO_COLOR_UPDATED")
+
+
 

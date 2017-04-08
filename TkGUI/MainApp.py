@@ -4,6 +4,7 @@ from tkinter import Tk, Frame, BOTH, Button, ttk, RIGHT, RAISED, LEFT
 from TkGUI import PlayControls as PC, DisplayWindow as DW, Timeline as TL
 from TkGUI import SelectedLightGUI as SL, MovementClipEditor as SC, ColorClipEditor as CC
 from Utils import *
+from SaveFile import *
 
 tk.Frame = tk.LabelFrame
 
@@ -56,6 +57,8 @@ class MainApplication(tk.Frame):
         info_editor_frame.grid_columnconfigure(0, weight=0)
 
         self.selected_clip = None
+
+        self.saver = TkFileDialog(self)
 
         info_editor_frame.grid(column=2, row=1, rowspan=2, sticky='NS')
         info_editor_frame.grid_columnconfigure(0, minsize=270)

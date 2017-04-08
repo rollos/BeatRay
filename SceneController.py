@@ -1,6 +1,7 @@
 from Utils import *
 from SceneModel import *
 from SceneView import *
+import pickle
 
 class SceneController():
     def __init__(self, SceneModel: SceneModel, SceneView: SceneView, root:tk.Tk):
@@ -18,11 +19,23 @@ class SceneController():
 
         SceneModel.new_light()
 
-        SceneModel.main_loop(root)
+        self.main_loop(root)
 
 
 
 
+    def main_loop(self, root):
+        while (True):
+
+            root.update_idletasks()
+            root.update()
+
+
+            if self.scene_model.play_state == PLAY_STATE:
+                #Delay the clock so that it matches the current bpm (in midi  so 24 ticks per beat)
+                self.scene_model.bpm_delay()
+
+                self.scene_model.advance_scrubber()
 
 
 
@@ -45,6 +58,12 @@ class SceneController():
 
     #When the view is updated, update the model
     def update_model(self, message,value=None):
+        if message == "SAVE_SCENE":
+            pickle.dump(self.scene_model, open(self.scene_view.get_save_filename(), "wb"))
+
+        if message == "LOAD_SCENE":
+            self.scene_view.__setstate__(pickle.load(self.scene_view.get_load_filename(), "rb"))
+
         if message == "BPM_UPDATE":
             self.scene_model.set_BPM(self.scene_view.get_bpm())
         elif message == "SCENE_LENGTH_UPDATE":
@@ -54,13 +73,6 @@ class SceneController():
         elif message == "STOP_PRESSED":
             self.scene_model.stop_pressed()
 
-        elif message == "NEW_SCENE":
-            self.scene_model.new_scene()
-        elif message == "LOAD_SCENE":
-            self.scene_model.load_scene()
-        elif message == "SAVE_SCENE":
-            self.scene_model.save_scene()
-
         elif message == "LIGHT_SELECTED":
             selected_light = self.scene_view.get_selected_light()
             self.scene_model.select_light(selected_light)
@@ -69,6 +81,8 @@ class SceneController():
 
         elif message == "NEW_LIGHT":
             self.scene_model.new_light()
+            self.scene_model.get_selected_light().rendered_light.draw_light(self.scene_view.gui.display_window.canvas)
+
         elif message == "NEW_MOVEMENT_CLIP":
             self.scene_model.new_movement_clip()
         elif message == "NEW_COLOR_CLIP":
@@ -180,10 +194,16 @@ class SceneController():
             self.scene_view.set_scene_length(self.scene_model.scene_length)
 
         elif message == "CLIP_START_UPDATED":
+             self.scene_view.set_clip_end(self.scene_model.get_selected_clip().clip_end)
              self.update_timelines()
 
         elif message == "CLIP_END_UPDATED":
+             self.scene_view.set_clip_length(self.scene_model.get_selected_clip().clip_end)
              self.update_timelines()
+
+        elif message == "CLIP_LENGTH_UPDATED":
+            self.scene_view.set_clip_end(self.scene_model.get_selected_clip().clip_end)
+            self.update_timelines()
 
         elif message == "CLIP_TYPE_UPDATED":
             self.update_timelines()
