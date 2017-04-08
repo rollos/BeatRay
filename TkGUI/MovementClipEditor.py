@@ -1,6 +1,7 @@
 from Utils import *
 from SceneModel import *
 from ClipModels import *
+from tkUtils import *
 
 class MovementClipEditor(tk.LabelFrame):
     def __init__(self,parent, callback):

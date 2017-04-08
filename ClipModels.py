@@ -1,6 +1,7 @@
 from ObjectMovements import move_render_to_frames
 from ObjectColors import color_render_to_frames
 from Utils import*
+from Defaults import *
 import random
 
 

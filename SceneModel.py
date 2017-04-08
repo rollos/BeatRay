@@ -7,7 +7,7 @@ from Utils import *
 from ClipModels import ColorClipModel, MovementClipModel
 
 from tkinter import TclError
-
+from Defaults import *
 
 
 

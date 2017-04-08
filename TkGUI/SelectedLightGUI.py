@@ -1,6 +1,8 @@
 from Utils import *
 
 from SceneModel import LightModel
+from tkUtils import *
+from Defaults import *
 
 DEFAULT_ID = 123
 

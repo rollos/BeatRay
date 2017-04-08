@@ -1,6 +1,8 @@
 import random
 import tkinter as tk
+from Defaults import *
 from Utils import *
+
 from SceneModel import SceneModel, LightModel
 
 from ClipModels import ClipModel, ColorClipModel, MovementClipModel
