@@ -8,7 +8,7 @@ class TkFileDialog(tk.Frame):
         tk.Frame.__init__(self, root)
 
         self.file_opt = options = {}
-        options['filetypes'] = [('all files', '.*'), ('text files', '.txt')]
+        options['filetypes'] = [('all files', '*'), ('text files', '*.txt')]
         options['initialfile'] = 'myfile.txt'
         options['parent'] = root
 
@@ -16,10 +16,10 @@ class TkFileDialog(tk.Frame):
         filename = tk.filedialog.asksaveasfilename(**self.file_opt)
 
         if filename:
-            return filename
+            return filename + ".txt"
 
     def askloadasfilename(self):
-        filename = tk.filedialog.askopenfiles(**self.file_opt)
+        filename = tk.filedialog.askopenfilename(**self.file_opt)
 
         if filename:
             return filename

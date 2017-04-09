@@ -24,6 +24,7 @@ class SceneController():
 
 
 
+
     def main_loop(self, root):
         while (True):
 
@@ -59,10 +60,27 @@ class SceneController():
     #When the view is updated, update the model
     def update_model(self, message,value=None):
         if message == "SAVE_SCENE":
-            pickle.dump(self.scene_model, open(self.scene_view.get_save_filename(), "wb"))
+            fn = self.scene_view.get_save_filename()
+            if fn is not None:
+                f = open(fn, "wb")
+                pickle.dump(self.scene_model, f)
+                f.close()
 
         if message == "LOAD_SCENE":
-            self.scene_view.__setstate__(pickle.load(self.scene_view.get_load_filename(), "rb"))
+            fn = self.scene_view.get_load_filename()
+            if fn is not None:
+                f = open(fn, "rb")
+
+                self.scene_model = pickle.load(f)
+
+                self.scene_model.canvas = self.scene_view.gui.display_window.canvas
+
+                self.scene_model.register_observer(self)
+
+                self.scene_model.make_lights_from_state()
+
+                f.close()
+            print("loaded")
 
         if message == "BPM_UPDATE":
             self.scene_model.set_BPM(self.scene_view.get_bpm())
@@ -164,7 +182,9 @@ class SceneController():
             self.update_lights_and_sched()
 
         elif message == "CLIP_RESIZED":
-            self.scene_model.get_selected_light().get_clip(value[0]).clip_resized(value[1])
+            light = self.scene_model.get_selected_light()
+            clip = light.get_clip(value[0])
+            clip.clip_resized(value[1])
             self.scene_model.get_selected_light().render_schedules()
 
 
@@ -218,6 +238,9 @@ class SceneController():
         elif message == "SCRUB_TIME_UPDATED":
             self.scene_view.update_lights(self.scene_model.lights, self.scene_model.scrub_time)
             self.scene_view.update_scrubber(self.scene_model.scrub_time)
+
+        elif message == "CANVAS_REQUESTED":
+            self.scene_model.canvas = self.scene_view.gui.display_window.canvas
 
 
 

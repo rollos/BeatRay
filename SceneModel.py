@@ -34,6 +34,8 @@ class SceneModel():
 
         self.scrub_time = 0
 
+        self.lights_state = None
+
 
 
 
@@ -74,9 +76,14 @@ class SceneModel():
         d = {}
         d["bpm"] = self.bpm
         d["scene_length"] = self.scene_length
-        d["light_id_counter"] = self.light_id_counter
+        d["light_id_counter"] = 0
+        d["play_state"] = PAUSE_STATE
 
-        lights = [light.__getstate__() for light in self.lights.values()]
+        lights = {}
+
+        for id in self.lights:
+            lights[id] = self.lights[id].__getstate__()
+
         d["lights"] = lights
         print("test")
         print(d)
@@ -84,9 +91,25 @@ class SceneModel():
         return d
 
     def __setstate__(self,state):
+        self.lights_state = state["lights"]
         self.bpm = state["bpm"]
         self.scene_length = state["scene_length"]
-        self.light_id_counter = state["light_id_counter"]
+        self.light_id_counter = 0
+        self.play_state = PAUSE_STATE
+        self.selected_light_id = 0
+
+        self.canvas = None
+
+        self.selected_light_id = 0
+
+        self.lights = {}
+
+        self.observers = []
+
+        self.scrub_time = 0
+
+
+
 
 
 
@@ -155,8 +178,8 @@ class SceneModel():
             print("Light does not exist")
 
 
-    def new_light(self):
-        light = LightModel(self, self.light_id_counter)
+    def new_light(self, state=None):
+        light = LightModel(self, id=self.light_id_counter, state=state)
         self.lights[self.light_id_counter] = light
 
         self.selected_light_id = self.light_id_counter
@@ -196,24 +219,49 @@ class SceneModel():
         for light in self.lights.values():
             light.update_display_light(self.scrub_time)
 
+    def make_lights_from_state(self):
+        for light_state in self.lights_state.values():
+            self.new_light(light_state)
+        pass
+
+
 
 class LightModel():
 
-    def __init__(self, parent_scene, id):
-
-        self.id = id
+    def __init__(self, parent_scene, id=None, state=None):
         self.parent_scene = parent_scene
-
-        self.size = 10
-        self.shape = DEF_SHAPE
-        self.clip_id_counter = 0
-
-
-
-        self.selected_clip_id = None
-
         self.movement_clips = {}
         self.color_clips = {}
+
+        if state is None:
+            self.id = id
+
+
+            self.size = 10
+            self.shape = DEF_SHAPE
+            self.clip_id_counter = 0
+
+
+
+            self.selected_clip_id = None
+
+
+        else:
+            print(state)
+            self.id = state["id"]
+            self.size = state["size"]
+            self.shape = state["shape"]
+            self.clip_id_counter = state["clip_id_counter"]
+
+            self.selected_clip_id = None
+
+            for clip in state["color_clips"]:
+                self.color_clips[clip["id"]] = ColorClipModel(self, id, clip)
+
+            for clip in state["movement_clips"]:
+                self.movement_clips[clip["id"]] = MovementClipModel(self, id, clip)
+
+
         self.rendered_light = RenderedLight(self, self.parent_scene.canvas)
 
 
@@ -295,6 +343,9 @@ class LightModel():
         d["size"] = self.size
         d["shape"] = self.shape
         d["clip_id_counter"] = self.clip_id_counter
+
+
+
         d["movement_clips"] = [clip.__getstate__() for clip in self.movement_clips.values()]
         d["color_clips"] = [clip.__getstate__() for clip in self.color_clips.values()]
 

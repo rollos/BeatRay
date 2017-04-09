@@ -172,7 +172,7 @@ class SceneView():
         return self.gui.saver.asksaveasfilename()
 
     def get_load_filename(self):
-        return self.gui.save.askloadasfilename()
+        return self.gui.saver.askloadasfilename()
 
 
 

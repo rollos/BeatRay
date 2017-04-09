@@ -7,19 +7,29 @@ import random
 
 
 class ClipModel():
-    def __init__(self, parent_light, id):
+    def __init__(self, parent_light, id=None, state=None):
 
-        self.id = id
+        if state is not None:
 
-        self.type = None
+            self.clip_length = state["clip_length"]
+            self.clip_start = state["clip_start"]
+            self.clip_end = state["clip_end"]
+            self.id = state["id"]
+            self.color = state["color"]
+
+        else:
+
+            self.id = id
+
+            self.type = None
+
+            self.clip_length = DEF_CLIP_LENGTH
+            self.clip_start = DEF_CLIP_START
+            self.clip_end = self.clip_start + self.clip_length
+
+            self.color = convert_to_color(random.randint(0, 255),random.randint(0, 255),random.randint(0, 255))
+
         self.parent_light = parent_light
-
-        self.clip_length = DEF_CLIP_LENGTH
-        self.clip_start = DEF_CLIP_START
-        self.clip_end = self.clip_start + self.clip_length
-
-        self.color = convert_to_color(random.randint(0, 255),random.randint(0, 255),random.randint(0, 255))
-
         self.frames = None
 
     def __getstate__(self):
@@ -72,27 +82,43 @@ class ClipModel():
 
 class MovementClipModel(ClipModel):
 
-    def __init__(self, parent, id):
-        super().__init__(parent, id)
+    def __init__(self, parent, id=None, state=None):
+        super().__init__(parent, id, state)
 
+        if state is not None:
+            self.type = state["type"]
+            self.static_location = state["static_location"]
 
+            self.start_location = state["start_location"]
+            self.end_location = state["end_location"]
 
-        self.type = DEF_MOVEMENT_CLIP_TYPE
-        self.static_location = DEF_STATIC_LOCATION
+            self.c_center_location = state["c_center_location"]
+            self.c_start_degrees = state["c_start_degrees"]
+            self.c_end_degrees = state["c_end_degrees"]
+            self.c_radius = state["c_radius"]
 
-        self.start_location = DEF_START_LOCATION
-        self.end_location = DEF_END_LOCATION
+            self.s_center_location = state["s_center_location"]
+            self.s_start_degrees = state["s_start_degrees"]
+            self.s_end_degrees = state["s_end_degrees"]
+            self.s_start_radius = state["s_start_radius"]
+            self.s_end_radius = state["s_end_radius"]
+        else:
+            self.type = DEF_MOVEMENT_CLIP_TYPE
+            self.static_location = DEF_STATIC_LOCATION
 
-        self.c_center_location = DEF_C_CENTER_LOCATION
-        self.c_start_degrees = DEF_C_START_DEGREES
-        self.c_end_degrees = DEF_C_END_DEGREES
-        self.c_radius = DEF_C_RADIUS
+            self.start_location = DEF_START_LOCATION
+            self.end_location = DEF_END_LOCATION
 
-        self.s_center_location = DEF_S_CENTER_LOCATION
-        self.s_start_degrees = DEF_C_START_DEGREES
-        self.s_end_degrees = DEF_S_END_DEGREES
-        self.s_start_radius = DEF_S_START_RADIUS
-        self.s_end_radius = DEF_S_END_RADIUS
+            self.c_center_location = DEF_C_CENTER_LOCATION
+            self.c_start_degrees = DEF_C_START_DEGREES
+            self.c_end_degrees = DEF_C_END_DEGREES
+            self.c_radius = DEF_C_RADIUS
+
+            self.s_center_location = DEF_S_CENTER_LOCATION
+            self.s_start_degrees = DEF_C_START_DEGREES
+            self.s_end_degrees = DEF_S_END_DEGREES
+            self.s_start_radius = DEF_S_START_RADIUS
+            self.s_end_radius = DEF_S_END_RADIUS
 
     def static_location_updated(self, location):
         self.static_location = location
@@ -153,17 +179,30 @@ class MovementClipModel(ClipModel):
 
 class ColorClipModel(ClipModel):
 
-    def __init__(self,parent, id):
-        super().__init__(parent, id)
+    def __init__(self,parent, id=None,state=None):
+        super().__init__(parent, id, state)
 
-        self.type = DEF_COLOR_CLIP_TYPE
-        self.static_color = DEF_STATIC_COLOR
-        self.color_1_time = beats_to_tick(DEF_COLOR_1_TIME)
-        self.color_2_time = beats_to_tick(DEF_COLOR_2_TIME)
-        self.color_1 = DEF_COLOR_1
-        self.color_2 = DEF_COLOR_2
-        self.from_color = DEF_FROM_COLOR
-        self.to_color = DEF_TO_COLOR
+        if state is not None:
+            self.type = state["type"]
+            self.static_color = state["static_color"]
+            self.color_1_time = state["color_1_time"]
+            self.color_2_time = state["color_2_time"]
+            self.color_1 = state["color_1"]
+            self.color_2 = state["color_2"]
+            self.from_color = state["from_color"]
+            self.to_color = state["to_color"]
+        else:
+            self.type = DEF_COLOR_CLIP_TYPE
+            self.static_color = DEF_STATIC_COLOR
+            self.color_1_time = beats_to_tick(DEF_COLOR_1_TIME)
+            self.color_2_time = beats_to_tick(DEF_COLOR_2_TIME)
+            self.color_1 = DEF_COLOR_1
+            self.color_2 = DEF_COLOR_2
+            self.from_color = DEF_FROM_COLOR
+            self.to_color = DEF_TO_COLOR
+
+
+
 
     def render_clip(self):
         self.clip_frames = color_render_to_frames(self)
