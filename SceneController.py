@@ -165,6 +165,8 @@ class SceneController():
         elif message == "C_START_DEGREES_UPDATED":
             self.scene_model.get_selected_clip().c_start_degrees_updated(self.scene_view.get_c_start_degrees())
             self.update_lights_and_sched()
+        elif message == "C_END_DEGREES_UPDATED":
+            self.scene_model.get_selected_clip().c_end_degrees_updated(self.scene_view.get_c_end_degrees())
         elif message == "S_CENTER_LOCATION_UPDATED":
             self.scene_model.get_selected_clip().s_center_location_updated(self.scene_view.get_s_center_location())
             self.update_lights_and_sched()

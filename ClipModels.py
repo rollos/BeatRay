@@ -141,7 +141,7 @@ class MovementClipModel(ClipModel):
         self.send_update("C_START_DEGREES_UPDATED")
 
     def c_end_degrees_updated(self,degrees):
-        self.c_end_degrees(degrees)
+        self.c_end_degrees = degrees
         self.send_update("C_END_DEGREES_UPDATED")
 
     def c_radius_updated(self, radius):

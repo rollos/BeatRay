@@ -1,5 +1,7 @@
 from ClipModels import MovementClipModel
+from Defaults import *
 from ObjectMovements import *
+from ObjectColors import *
 import tkinter as tk
 from LightFrame import *
 
@@ -34,8 +36,14 @@ class RenderedLight:
 
     def color_light(self,color):
         if type(color) is tuple:
+            if color == (0,0,0):
+                self.canvas.tag_lower(self.light_id)
+
             self.canvas.itemconfig(self.light_id, fill=convert_to_color(*color))
         elif type(color) is str:
+            if color == convert_to_color(0,0,0):
+                self.canvas.tag_lower(self.light_id)
+
             self.canvas.itemconfig(self.light_id, fill=color)
         else:
             raise ValueError
@@ -52,12 +60,12 @@ class RenderedLight:
             x, y = frame.position
             radius = frame.radius
 
-            self.current_position = (x,y)
 
             self.move_light(x, y, radius)
             self.color_light(frame.color)
+
         except:
-            self.canvas.tag_lower(self.light_id)
+
             self.color_light("black")
 
 
@@ -99,9 +107,12 @@ class RenderedLight:
 
 
 
+
 def render_clip(clip):
     if type(clip) is MovementClipModel:
         return move_render_to_frames(clip)
+    if type(clip) is ColorClipMode:
+        return color_render_to_frames(clip)
 
 
 def full_render(movement_clips, color_clips):
