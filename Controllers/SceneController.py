@@ -1,7 +1,8 @@
-from Utils import *
-from SceneModel import *
-from SceneView import *
 import pickle
+
+from Models import SceneModel
+from Views.SceneView import *
+
 
 class SceneController():
     def __init__(self, SceneModel: SceneModel, SceneView: SceneView, root:tk.Tk):
@@ -99,7 +100,12 @@ class SceneController():
 
         elif message == "NEW_LIGHT":
             self.scene_model.new_light()
-            self.scene_model.get_selected_light().rendered_light.draw_light(self.scene_view.gui.display_window.canvas)
+            self.scene_model.get_selected_light().rendered_light.draw_light()
+
+
+        elif message == "SELECTED_LIGHT_DUPLICATED":
+            self.scene_model.new_light(self.scene_model.get_selected_light().__getstate__(), duplicate=True)
+            self.scene_model.get_selected_light().rendered_light.draw_light()
 
         elif message == "NEW_MOVEMENT_CLIP":
             self.scene_model.new_movement_clip()
@@ -165,6 +171,8 @@ class SceneController():
         elif message == "C_START_DEGREES_UPDATED":
             self.scene_model.get_selected_clip().c_start_degrees_updated(self.scene_view.get_c_start_degrees())
             self.update_lights_and_sched()
+        elif message == "C_END_DEGREES_UPDATED":
+            self.scene_model.get_selected_clip().c_end_degrees_updated(self.scene_view.get_c_end_degrees())
         elif message == "S_CENTER_LOCATION_UPDATED":
             self.scene_model.get_selected_clip().s_center_location_updated(self.scene_view.get_s_center_location())
             self.update_lights_and_sched()

@@ -1,7 +1,5 @@
-from Utils import *
-from ClipModels import ColorClipModel
-from tkUtils import *
-
+from Models.ColorClipModel import ColorClipModel
+from Utils.tkUtils import *
 
 
 class ColorClipsEditor(tk.LabelFrame):

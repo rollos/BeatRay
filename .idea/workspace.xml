@@ -2,16 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c014613-b656-4c56-9b6e-30a1d8e267c8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Defaults.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SaveFile.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tkUtils.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Models/LightModel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Models/MovementClipModel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Models/__init__.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PygameStuff/Display.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PygameStuff/FunctionScheduler.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PygameStuff/Light.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PygameStuff/ObjInstData.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PygameStuff/Scene.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PygameStuff/SceneFactory.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/BPMTools.py" afterPath="$PROJECT_DIR$/Utils/BPMTools.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ClipModels.py" afterPath="$PROJECT_DIR$/Models/ClipModels.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Defaults.py" afterPath="$PROJECT_DIR$/Utils/Defaults.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/LightFrame.py" afterPath="$PROJECT_DIR$/Models/LightFrame.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ObjectColors.py" afterPath="$PROJECT_DIR$/FrameMakers/ObjectColors.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ObjectMovements.py" afterPath="$PROJECT_DIR$/FrameMakers/ObjectMovements.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/PygameStuff/__init__.py" afterPath="$PROJECT_DIR$/Models/ColorClipModel.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Render.py" afterPath="$PROJECT_DIR$/FrameMakers/Render.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/SaveFile.py" afterPath="$PROJECT_DIR$/TkGUI/SaveFile.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/SceneController.py" afterPath="$PROJECT_DIR$/Controllers/SceneController.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/SceneModel.py" afterPath="$PROJECT_DIR$/Models/SceneModel.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/SceneView.py" afterPath="$PROJECT_DIR$/Views/SceneView.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Utils.py" afterPath="$PROJECT_DIR$/Utils/Utils.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/tkUtils.py" afterPath="$PROJECT_DIR$/Utils/tkUtils.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClipModels.py" afterPath="$PROJECT_DIR$/ClipModels.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Render.py" afterPath="$PROJECT_DIR$/Render.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SceneController.py" afterPath="$PROJECT_DIR$/SceneController.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SceneModel.py" afterPath="$PROJECT_DIR$/SceneModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SceneView.py" afterPath="$PROJECT_DIR$/SceneView.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Driver.py" afterPath="$PROJECT_DIR$/Driver.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TkGUI/ColorClipEditor.py" afterPath="$PROJECT_DIR$/TkGUI/ColorClipEditor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TkGUI/DisplayWindow.py" afterPath="$PROJECT_DIR$/TkGUI/DisplayWindow.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TkGUI/MainApp.py" afterPath="$PROJECT_DIR$/TkGUI/MainApp.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TkGUI/MovementClipEditor.py" afterPath="$PROJECT_DIR$/TkGUI/MovementClipEditor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TkGUI/PlayControls.py" afterPath="$PROJECT_DIR$/TkGUI/PlayControls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TkGUI/SelectedLightGUI.py" afterPath="$PROJECT_DIR$/TkGUI/SelectedLightGUI.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TkGUI/Timeline.py" afterPath="$PROJECT_DIR$/TkGUI/Timeline.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,7 +50,7 @@
     <SUITE FILE_PATH="coverage/LightShow$DisplayLightModel.coverage" NAME="DisplayLightModel Coverage Results" MODIFIED="1491426568396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LightShow$Utils.coverage" NAME="Utils Coverage Results" MODIFIED="1491504856725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LightShow$FullScreenDisplay.coverage" NAME="FullScreenDisplay Coverage Results" MODIFIED="1487715638623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/LightShow$Driver.coverage" NAME="Driver Coverage Results" MODIFIED="1491629253809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LightShow$Driver.coverage" NAME="Driver Coverage Results" MODIFIED="1491873522651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LightShow$GUIMovementPanel.coverage" NAME="GUIMovementPanel Coverage Results" MODIFIED="1490124951656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GUI" />
     <SUITE FILE_PATH="coverage/LightShow$PyGame.coverage" NAME="PyGame Coverage Results" MODIFIED="1487923051031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LightShow$Scene.coverage" NAME="Scene Coverage Results" MODIFIED="1490385977020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -44,11 +66,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SceneModel.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SceneModel.py">
+      <file leaf-file-name="SceneModel.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Models/SceneModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="88" column="30" lean-forward="false" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
+            <state relative-caret-position="252">
+              <caret line="171" column="22" lean-forward="false" selection-start-line="171" selection-start-column="22" selection-end-line="171" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Utils/Utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="444">
+              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClipModels.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Models/ClipModels.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -56,91 +100,77 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SceneController.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SceneController.py">
+      <file leaf-file-name="LightModel.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Models/LightModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="64" column="40" lean-forward="false" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="40" />
+            <state relative-caret-position="390">
+              <caret line="31" column="37" lean-forward="true" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#0#44#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClipModels.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ClipModels.py">
+      <file leaf-file-name="SelectedLightGUI.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TkGUI/SelectedLightGUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="59" column="44" lean-forward="false" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
-              <folding>
-                <element signature="e#0#49#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MovementClipEditor.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TkGUI/MovementClipEditor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2565">
-              <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Defaults.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Defaults.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="47" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="14" />
+            <state relative-caret-position="300">
+              <caret line="55" column="29" lean-forward="true" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SceneView.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SceneView.py">
+      <file leaf-file-name="SceneController.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/SceneController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+            <state relative-caret-position="420">
+              <caret line="106" column="33" lean-forward="true" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Render.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Render.py">
+        <entry file="file://$PROJECT_DIR$/FrameMakers/Render.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="49" column="12" lean-forward="true" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
+            <state relative-caret-position="120">
+              <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainApp.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TkGUI/MainApp.py">
+      <file leaf-file-name="ObjectColors.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FrameMakers/ObjectColors.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="60" column="39" lean-forward="false" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayControls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TkGUI/PlayControls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="22" column="143" lean-forward="true" selection-start-line="22" selection-start-column="143" selection-end-line="22" selection-end-column="143" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Driver.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Driver.py">
+      <file leaf-file-name="ObjectMovements.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FrameMakers/ObjectMovements.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -157,8 +187,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>AssertionError: Subclass of &lt;class 'sgc.widgets.container.Container'&gt; not initialised properly.</find>
-      <find>Subclass</find>
       <find>subclass</find>
       <find>sprial</find>
       <find>ceil</find>
@@ -187,6 +215,8 @@
       <find>color</find>
       <find>canvas</find>
       <find>clip_frames</find>
+      <find>making</find>
+      <find>making_schedules</find>
     </findStrings>
     <replaceStrings>
       <replace>self.schedule_data</replace>
@@ -206,15 +236,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/SceneBuilderGUI.py" />
-        <option value="$PROJECT_DIR$/GUI/GUI.py" />
-        <option value="$PROJECT_DIR$/GUI/GUIColorPanel.py" />
-        <option value="$PROJECT_DIR$/GUI/GUIPanel.py" />
-        <option value="$PROJECT_DIR$/SceneFactory.py" />
-        <option value="$PROJECT_DIR$/Obj_Inst_Data.py" />
-        <option value="$PROJECT_DIR$/GUI/SceneBuilderGUI.py" />
-        <option value="$PROJECT_DIR$/BPMGetter.py" />
-        <option value="$PROJECT_DIR$/sgc/widgets/input_box.py" />
         <option value="$PROJECT_DIR$/sgc/widgets/base_widget.py" />
         <option value="$PROJECT_DIR$/Display.py" />
         <option value="$PROJECT_DIR$/GUI/CoordinateWidget.py" />
@@ -237,26 +258,35 @@
         <option value="$PROJECT_DIR$/TkGUI/MovementRenderers.py" />
         <option value="$PROJECT_DIR$/MovementRenderers.py" />
         <option value="$PROJECT_DIR$/PygameStuff/ClipModels.py" />
-        <option value="$PROJECT_DIR$/TkGUI/DisplayWindow.py" />
         <option value="$PROJECT_DIR$/RenderedLight.py" />
         <option value="$PROJECT_DIR$/LightFrameModel.py" />
         <option value="$PROJECT_DIR$/LightFrame.py" />
-        <option value="$PROJECT_DIR$/ObjectColors.py" />
-        <option value="$PROJECT_DIR$/Driver.py" />
-        <option value="$PROJECT_DIR$/ObjectMovements.py" />
-        <option value="$PROJECT_DIR$/TkGUI/PlayControls.py" />
         <option value="$PROJECT_DIR$/TkGUI/ColorClipEditor.py" />
-        <option value="$PROJECT_DIR$/Defaults.py" />
-        <option value="$PROJECT_DIR$/TkGUI/Timeline.py" />
         <option value="$PROJECT_DIR$/TkGUI/SelectedLightGUI.py" />
-        <option value="$PROJECT_DIR$/Utils.py" />
         <option value="$PROJECT_DIR$/TkGUI/MainApp.py" />
-        <option value="$PROJECT_DIR$/TkGUI/MovementClipEditor.py" />
+        <option value="$PROJECT_DIR$/SaveFile.py" />
+        <option value="$PROJECT_DIR$/TkGUI/DisplayWindow.py" />
+        <option value="$PROJECT_DIR$/Defaults.py" />
         <option value="$PROJECT_DIR$/ClipModels.py" />
-        <option value="$PROJECT_DIR$/SceneView.py" />
-        <option value="$PROJECT_DIR$/Render.py" />
-        <option value="$PROJECT_DIR$/SceneController.py" />
+        <option value="$PROJECT_DIR$/Utils.py" />
+        <option value="$PROJECT_DIR$/ObjectMovements.py" />
         <option value="$PROJECT_DIR$/SceneModel.py" />
+        <option value="$PROJECT_DIR$/ObjectColors.py" />
+        <option value="$PROJECT_DIR$/TkGUI/MovementClipEditor.py" />
+        <option value="$PROJECT_DIR$/SceneController.py" />
+        <option value="$PROJECT_DIR$/Models/ColorClipModel.py" />
+        <option value="$PROJECT_DIR$/FrameMakers/ObjectMovements.py" />
+        <option value="$PROJECT_DIR$/Render.py" />
+        <option value="$PROJECT_DIR$/Driver.py" />
+        <option value="$PROJECT_DIR$/TkGUI/Timeline.py" />
+        <option value="$PROJECT_DIR$/SceneView.py" />
+        <option value="$PROJECT_DIR$/FrameMakers/ObjectColors.py" />
+        <option value="$PROJECT_DIR$/TkGUI/PlayControls.py" />
+        <option value="$PROJECT_DIR$/Utils/Defaults.py" />
+        <option value="$PROJECT_DIR$/Models/ClipModels.py" />
+        <option value="$PROJECT_DIR$/Controllers/SceneController.py" />
+        <option value="$PROJECT_DIR$/Models/SceneModel.py" />
+        <option value="$PROJECT_DIR$/Models/LightModel.py" />
       </list>
     </option>
   </component>
@@ -268,8 +298,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="690" />
+    <option name="width" value="1920" />
+    <option name="height" value="964" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -289,6 +319,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -298,6 +330,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="LightShow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LightShow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LightShow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -325,14 +371,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PygameStuff" />
+              <option name="myItemId" value="Controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -351,10 +395,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/PygameStuff" />
-      <recent name="$PROJECT_DIR$/GUI" />
-      <recent name="$PROJECT_DIR$/TkGUI" />
+      <recent name="$PROJECT_DIR$/FrameMakers" />
+      <recent name="$PROJECT_DIR$/Render" />
+      <recent name="$PROJECT_DIR$/Models" />
+      <recent name="$PROJECT_DIR$/../Models" />
+      <recent name="$PROJECT_DIR$/Views" />
     </key>
   </component>
   <component name="RunManager" selected="Python.Driver">
@@ -425,7 +470,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="LightShow" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ObjectMovements.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FrameMakers/ObjectMovements.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -443,7 +488,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="LightShow" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Utils.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Utils/Utils.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -682,6 +727,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1c014613-b656-4c56-9b6e-30a1d8e267c8" name="Default" comment="" />
@@ -746,7 +794,28 @@
       <option name="project" value="LOCAL" />
       <updated>1491621229908</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Saving is working, clip sizes update eachother, lights should clip right now">
+      <created>1491629322042</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1491629322042</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Saving and Loading work">
+      <created>1491780952427</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1491780952427</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Fixed jerkiness by having the renderer handle converting the relative coordinates to absolute ones">
+      <created>1491860200927</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1491860200928</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -759,49 +828,49 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="690" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="964" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1898223" sideWeight="0.4934334" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.086794466" sideWeight="0.4934334" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32762557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22488585" sideWeight="0.5021299" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2173913" sideWeight="0.4978701" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15022936" sideWeight="0.4978701" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12034079" sideWeight="0.5065666" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3400335" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33830276" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32663316" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32568806" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943144" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32762557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22488585" sideWeight="0.5021299" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32998326" sideWeight="0.4978701" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17609046" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2173913" sideWeight="0.4978701" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19224556" sideWeight="0.4934334" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32663316" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943144" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39363486" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12034079" sideWeight="0.5065666" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33946487" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -837,14 +906,43 @@
     <MESSAGE value="The clips kinda display whats in them on the screen. Only with static location, &#10;and the values don't update when they are updated in the clip editor." />
     <MESSAGE value="Static location and colors are at basic function in the timeline" />
     <MESSAGE value="Seperated Utils, tkUtils and Defaults" />
-    <option name="LAST_COMMIT_MESSAGE" value="Seperated Utils, tkUtils and Defaults" />
+    <MESSAGE value="Saving is working, clip sizes update eachother, lights should clip right now" />
+    <MESSAGE value="Saving and Loading work" />
+    <MESSAGE value="Fixed jerkiness by having the renderer handle converting the relative coordinates to absolute ones" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed jerkiness by having the renderer handle converting the relative coordinates to absolute ones" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/TkGUI/PlayControls.py</url>
-          <option name="timeStamp" value="220" />
+          <url>file://$PROJECT_DIR$/FrameMakers/ObjectMovements.py</url>
+          <line>122</line>
+          <option name="timeStamp" value="262" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/FrameMakers/ObjectMovements.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="267" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/FrameMakers/ObjectMovements.py</url>
+          <line>64</line>
+          <option name="timeStamp" value="268" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/FrameMakers/ObjectMovements.py</url>
+          <line>126</line>
+          <option name="timeStamp" value="269" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Models/SceneModel.py</url>
+          <line>177</line>
+          <option name="timeStamp" value="272" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Models/LightModel.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="274" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -857,20 +955,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="222" />
+      <option name="time" value="276" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="973" column="0" lean-forward="false" selection-start-line="973" selection-start-column="0" selection-end-line="973" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sgc/widgets/_interface/text.py" />
-    <entry file="file://$PROJECT_DIR$/sgc/widgets/fps_counter.py" />
     <entry file="file://$PROJECT_DIR$/sgc/widgets/input_box.py" />
     <entry file="file://$PROJECT_DIR$/sgc/widgets/composite/__init__.py" />
     <entry file="file://$PROJECT_DIR$/sgc/widgets/__init__.py" />
@@ -903,152 +992,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PygameStuff/ObjInstData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="28" column="45" lean-forward="true" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PygameStuff/Scene.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="109" column="49" lean-forward="false" selection-start-line="109" selection-start-column="49" selection-end-line="109" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PygameStuff/Display.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/PygameStuff/ObjInstData.py" />
+    <entry file="file://$PROJECT_DIR$/PygameStuff/Scene.py" />
+    <entry file="file://$PROJECT_DIR$/PygameStuff/Display.py" />
     <entry file="file://$PROJECT_DIR$/GUI/GUIColorPanel.py" />
     <entry file="file://$PROJECT_DIR$/TkGUI/ColorSwatch.py" />
     <entry file="file://$PROJECT_DIR$/GUI/GUIMovementPanel.py" />
     <entry file="file://$PROJECT_DIR$/Events.py" />
     <entry file="file://$PROJECT_DIR$/TkGUI/MainApplication.py" />
     <entry file="file://$PROJECT_DIR$/MovementRenderers.py" />
-    <entry file="file://$PROJECT_DIR$/PygameStuff/Light.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BPMTools.py">
+    <entry file="file://$PROJECT_DIR$/PygameStuff/Light.py" />
+    <entry file="file://$PROJECT_DIR$/Utils/BPMTools.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
           <caret line="44" column="45" lean-forward="true" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TkGUI/DisplayWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="26" lean-forward="false" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LightFrameModel.py" />
-    <entry file="file://$PROJECT_DIR$/PygameStuff/SceneFactory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ObjectColors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#1#44#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ObjectMovements.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="61" column="72" lean-forward="false" selection-start-line="61" selection-start-column="72" selection-end-line="61" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TkGUI/PlayControls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="21" lean-forward="false" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/PygameStuff/SceneFactory.py" />
     <entry file="file://$PROJECT_DIR$/TkGUI/ColorClipEditor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/tkinter/__init__.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/tkinter/filedialog.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
-          <caret line="259" column="0" lean-forward="false" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
-          <folding />
+          <caret line="371" column="4" lean-forward="false" selection-start-line="371" selection-start-column="4" selection-end-line="371" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tkUtils.py">
+    <entry file="file://$PROJECT_DIR$/TkGUI/SaveFile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1330">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TkGUI/Timeline.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="135">
+          <caret line="10" column="73" lean-forward="false" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TkGUI/MainApp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="60" column="39" lean-forward="false" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SaveFile.py">
+    <entry file="file://$PROJECT_DIR$/Utils/tkUtils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#20#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LightFrame.py">
+    <entry file="file://$PROJECT_DIR$/TkGUI/DisplayWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="67" lean-forward="false" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="1548" column="0" lean-forward="false" selection-start-line="1548" selection-start-column="0" selection-end-line="1548" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TkGUI/MovementClipEditor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="60" lean-forward="true" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/LightFrame.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
@@ -1056,86 +1081,132 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TkGUI/SelectedLightGUI.py">
+    <entry file="file://$PROJECT_DIR$/Models/ColorClipModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1455">
-          <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="15">
+          <caret line="1" column="39" lean-forward="true" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/SceneView.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TkGUI/Timeline.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Driver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+        <state relative-caret-position="90">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Defaults.py">
+    <entry file="file://$PROJECT_DIR$/Utils/Defaults.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="47" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="14" />
+        <state relative-caret-position="120">
+          <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ClipModels.py">
+    <entry file="file://$PROJECT_DIR$/FrameMakers/ObjectColors.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="59" column="44" lean-forward="false" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SceneView.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Render.py">
+    <entry file="file://$PROJECT_DIR$/TkGUI/PlayControls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="49" column="12" lean-forward="true" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
+        <state relative-caret-position="315">
+          <caret line="22" column="143" lean-forward="true" selection-start-line="22" selection-start-column="143" selection-end-line="22" selection-end-column="143" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TkGUI/MovementClipEditor.py">
+    <entry file="file://$PROJECT_DIR$/FrameMakers/ObjectMovements.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2565">
-          <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FrameMakers/Render.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SceneController.py">
+    <entry file="file://$PROJECT_DIR$/TkGUI/SelectedLightGUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="64" column="40" lean-forward="false" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="55" column="29" lean-forward="true" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SceneModel.py">
+    <entry file="file://$PROJECT_DIR$/Utils/Utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="88" column="30" lean-forward="false" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
+        <state relative-caret-position="444">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/ClipModels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/SceneController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="106" column="33" lean-forward="true" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/SceneModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="171" column="22" lean-forward="false" selection-start-line="171" selection-start-column="22" selection-end-line="171" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/LightModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="31" column="37" lean-forward="true" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>

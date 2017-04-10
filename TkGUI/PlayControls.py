@@ -1,7 +1,6 @@
-import tkinter as tk
-from tkUtils import *
+from Utils.tkUtils import *
+from Utils.Utils import *
 
-from Utils import *
 
 class PlayControls(tk.Frame):
     def __init__(self,parent):

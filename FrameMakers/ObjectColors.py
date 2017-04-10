@@ -1,7 +1,6 @@
+from Models.LightFrame import *
+from Utils.Utils import *
 
-from PygameStuff.FunctionScheduler import *
-from Utils import *
-from LightFrame import *
 
 def color_render_to_frames(clip):
     frame_length = beats_to_tick(clip.clip_length)
@@ -45,11 +44,11 @@ def blink(start_frame, end_frame, frame_length, light_size, shape, color1, color
     frame_counter = start_frame
 
     while frame_counter < end_frame:
-        for x in range(ticks1):
+        for x in range(int(round(ticks1))):
             s[frame_counter] = LightFrameModel(light_size, shape, color=color1)
             frame_counter+=1
 
-        for x in range(ticks2):
+        for x in range(int(round(ticks2))):
 
             s[frame_counter] = LightFrameModel(light_size, shape, color=color2)
             frame_counter += 1

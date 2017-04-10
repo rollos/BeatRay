@@ -1,10 +1,6 @@
-import os
-import tkinter as tk
-from tkinter import Tk, Frame, BOTH, Button, ttk, RIGHT, RAISED, LEFT
 from TkGUI import PlayControls as PC, DisplayWindow as DW, Timeline as TL
 from TkGUI import SelectedLightGUI as SL, MovementClipEditor as SC, ColorClipEditor as CC
-from Utils import *
-from SaveFile import *
+from TkGUI.SaveFile import *
 
 tk.Frame = tk.LabelFrame
 

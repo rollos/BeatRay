@@ -1,4 +1,4 @@
-import tkinter as tk
+from Utils.Defaults import *
 # A small frame that contains entry boxes for the
 # Length, Start, and End, points of a clip
 
@@ -49,4 +49,15 @@ def _create_circle(self, x, y, r, **kwargs):
     return self.create_oval(x-r, y-r, x+r, y+r, **kwargs)
 
 
+def convert_relative_to_absolute(position, canvas):
+    x,y = position
 
+    width = canvas.winfo_width()
+    height = canvas.winfo_height()
+
+    x_ratio = width / SCREEN_WIDTH
+    y_ratio = height / SCREEN_HEIGHT
+    abs_x = x * x_ratio
+    abs_y = y * y_ratio
+
+    return (abs_x, abs_y)

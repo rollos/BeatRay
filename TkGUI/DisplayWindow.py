@@ -1,5 +1,6 @@
 import tkinter as tk
 
+from Utils.Defaults import RES_RATIO
 
 
 class DisplayWindow(tk.Frame):
@@ -15,7 +16,7 @@ class DisplayWindow(tk.Frame):
         self.canvas = tk.Canvas(self.content_frame, background="black")
         self.canvas.pack( fill=tk.BOTH, expand=tk.YES)
 
-        set_aspect(self.content_frame, self, aspect_ratio=16.0 / 9.0)
+        set_aspect(self.content_frame, self, aspect_ratio=RES_RATIO)
 
 def set_aspect(content_frame, pad_frame, aspect_ratio):
     # a function which places a frame within a containing frame, and

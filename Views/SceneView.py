@@ -1,8 +1,9 @@
-from TkGUI import *
+from Models.LightModel import LightModel
+
+from Models.MovementClipModel import MovementClipModel
+from Models.ColorClipModel import ColorClipModel
 from TkGUI.MainApp import *
-from Utils import *
-from SceneModel import LightModel
-from ClipModels import ColorClipModel, MovementClipModel
+from Utils.Utils import *
 
 
 class SceneView():

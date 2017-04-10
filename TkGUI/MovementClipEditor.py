@@ -1,7 +1,6 @@
-from Utils import *
-from SceneModel import *
-from ClipModels import *
-from tkUtils import *
+from Models.MovementClipModel import MovementClipModel
+from Utils.tkUtils import *
+
 
 class MovementClipEditor(tk.LabelFrame):
     def __init__(self,parent, callback):

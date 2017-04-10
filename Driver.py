@@ -1,12 +1,10 @@
-from TkGUI import MainApp
-import SceneModel as m
-import SceneController as c
-import SceneView as v
 import tkinter as tk
-from Utils import _create_circle
 
-
-
+from Controllers import SceneController as c
+from Models import SceneModel as m
+from TkGUI import MainApp
+from Utils.Utils import _create_circle
+from Views import SceneView as v
 
 if __name__ == "__main__":
     root = tk.Tk()

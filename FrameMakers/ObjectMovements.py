@@ -1,11 +1,9 @@
 from math import *
 
-import time
-
-from SceneModel import *
-from Utils import _create_circle
-from Utils import *
-from LightFrame import *
+from Models.LightFrame import *
+from Models.SceneModel import *
+from Utils.Utils import *
+from Utils.Utils import _create_circle
 
 
 
@@ -43,6 +41,8 @@ def move_render_to_frames(clip):
 
     print("making_schedules")
 
+    canvas = clip.parent_light.parent_scene.canvas
+
     frame_length = beats_to_tick(clip.clip_length)
     light_size = clip.parent_light.size
     type = clip.parent_light.shape
@@ -51,21 +51,29 @@ def move_render_to_frames(clip):
 
 
     if clip.type == "None":
-        return make_static_frames(start_frame, end_frame, light_size, type, clip.static_location)
+        return make_static_frames(start_frame, end_frame,
+                                  light_size, type,
+                                  convert_relative_to_absolute(clip.static_location, canvas))
 
     elif clip.type == "Line":
-        return make_line_frames(start_frame,end_frame, frame_length, light_size,
-                                type, clip.start_location, clip.end_location)
+        return make_line_frames(start_frame,end_frame, frame_length,
+                                light_size, type,
+                                convert_relative_to_absolute(clip.start_location, canvas),
+                                convert_relative_to_absolute(clip.end_location, canvas))
 
     elif clip.type == "Circle":
         return make_circle_frames(start_frame, end_frame, frame_length,
-                                  light_size, type, clip.c_center_location,
-                                  clip.c_start_degrees, clip.c_end_degrees, clip.c_radius)
+                                  light_size, type,
+                                  convert_relative_to_absolute(clip.c_center_location, canvas),
+                                  clip.c_start_degrees, clip.c_end_degrees,
+                                  clip.c_radius)
     elif clip.type == "Spiral":
         return make_spiral_frames(start_frame, end_frame, frame_length,
-                                  light_size, type, clip.s_center_location,
+                                  light_size, type,
+                                  convert_relative_to_absolute(clip.s_center_location, canvas),
                                   clip.s_start_degrees, clip.s_end_degrees,
-                                  clip.s_start_radius, clip.s_end_radius)
+                                  clip.s_start_radius,
+                                  clip.s_end_radius)
 
 def make_static_frames(start_frame,end_frame, light_size, type, position):
     frames = {}

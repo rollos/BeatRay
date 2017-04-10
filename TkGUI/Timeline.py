@@ -1,13 +1,9 @@
-import random
-import tkinter as tk
-from Defaults import *
-from Utils import *
-
-from SceneModel import SceneModel, LightModel
-
-from ClipModels import ClipModel, ColorClipModel, MovementClipModel
-
 from math import floor
+
+from Models.MovementClipModel import MovementClipModel
+from Models.ColorClipModel import ColorClipModel
+from Utils.Utils import *
+import tkinter as tk
 
 class TimelineContainer(tk.Frame):
     def __init__(self, parent):
