@@ -1,4 +1,5 @@
 import tkinter as tk
+from Defaults import RES_RATIO
 
 from Utils.Defaults import RES_RATIO
 
