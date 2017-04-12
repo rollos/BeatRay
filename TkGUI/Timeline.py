@@ -9,9 +9,10 @@ class TimelineContainer(tk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
         self.parent = parent
-        self.initialize()
+
         self.scene_length = DEF_SCENE_LENGTH
 
+        self.initialize()
 
 
     def initialize(self):
@@ -48,15 +49,25 @@ class Timeline(tk.Frame):
 
         self.canvas = tk.Canvas(self, height = 50, background= "GREY")
 
-        coords = (0, 0, 100, 100)
+
+
+        coords = (10, 10, 100, 100)
+        self.length = parent.scene_length
 
         self.scrubber = Scrubber(self, self.canvas)
 
+
+
         self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
+
+
+      #  self.lines = self.draw_grid_lines()
+
+
 
         self.clip_dict = None
 
-        self.length= None
+
 
         self.clips = []
 
@@ -76,6 +87,8 @@ class Timeline(tk.Frame):
         self.canvas.delete("all")
 
         self.scrubber.draw_scrub()
+
+        self.draw_grid_lines()
 
         self.canvas.tag_raise(self.scrubber.id)
 
@@ -110,13 +123,43 @@ class Timeline(tk.Frame):
     def message_view(self, message, value=None):
         self.parent.message_view(message, value)
 
+    def draw_grid_lines(self):
+        grid_lines = []
+        pix = self.get_pix_per_frame()
+
+        for x in range(0,int(round(self.length))):
+            if x%(24*4) == 0:
+                coords = (x * pix, 0, x * pix, self.canvas.winfo_height() / 3)
+                id = self.canvas.create_line(*coords, fill="black", width=2)
+                grid_lines.append(id)
+
+            elif x%24 == 0:
+
+                coords = (x*pix,0, x*pix, self.canvas.winfo_height()/4)
+
+                id = self.canvas.create_line(*coords, fill="black", width=1)
+                grid_lines.append(id)
+
+            elif x%12 == 0 and x%24 != 0:
+                coords = (x * pix, 0, x * pix, self.canvas.winfo_height() / 8)
+                id = self.canvas.create_line(*coords, fill="black", width=1)
+                grid_lines.append(id)
 
 
+            elif x%6==0 and x%12 != 0:
+                coords = (x * pix, 0, x * pix, self.canvas.winfo_height() / 16)
+                id = self.canvas.create_line(*coords, fill="black", width=1)
+                grid_lines.append(id)
+
+
+
+        return grid_lines
 
 
 class MovementTimeline(Timeline):
     def __init__(self,parent):
         self.parent = parent
+
         super().__init__(parent)
 
         self.clips = []
@@ -150,6 +193,8 @@ class Scrubber():
     def __init__(self, parent, canvas:tk.Canvas):
         self.canvas = canvas
         self.parent = parent
+
+
 
         self.coords = (1,0,1,0)
         self.draw_scrub()
