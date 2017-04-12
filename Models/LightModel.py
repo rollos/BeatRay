@@ -6,7 +6,7 @@ from Utils.Defaults import *
 
 class LightModel():
 
-    def __init__(self, parent_scene, id=None, state=None, duplicate=False):
+    def __init__(self, parent_scene, id=None, state=None):
         self.parent_scene = parent_scene
         self.movement_clips = {}
         self.color_clips = {}
@@ -26,10 +26,8 @@ class LightModel():
 
         else:
             print(state)
-            if duplicate:
-                self.id = id
-            else:
-                self.id = state["id"]
+
+            self.id = state["id"]
             self.size = state["size"]
             self.shape = state["shape"]
             self.clip_id_counter = state["clip_id_counter"]
@@ -84,7 +82,10 @@ class LightModel():
 
     def update_shape(self, shape):
         self.shape = shape
+        self.render_schedules()
+        self.rendered_light.redraw_light(self)
         self.send_update("LIGHT_TYPE_UPDATED")
+
 
 
 

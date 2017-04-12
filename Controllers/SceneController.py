@@ -83,6 +83,10 @@ class SceneController():
                 f.close()
             print("loaded")
 
+        if message == "SELECTED_LIGHT_DELETED":
+            self.scene_model.delete_selected_light()
+
+
         if message == "BPM_UPDATE":
             self.scene_model.set_BPM(self.scene_view.get_bpm())
         elif message == "SCENE_LENGTH_UPDATE":
@@ -104,8 +108,7 @@ class SceneController():
 
 
         elif message == "SELECTED_LIGHT_DUPLICATED":
-            self.scene_model.new_light(self.scene_model.get_selected_light().__getstate__(), duplicate=True)
-            self.scene_model.get_selected_light().rendered_light.draw_light()
+            pass
 
         elif message == "NEW_MOVEMENT_CLIP":
             self.scene_model.new_movement_clip()
@@ -218,8 +221,9 @@ class SceneController():
         elif message == "CLIP_SELECTED": #If a new clip has been selected, push the newly selected clip to the view
             self.scene_view.display_clip(self.scene_model.get_selected_light().get_selected_clip())
             self.update_timelines()
-        elif message == "SCENE_LENGTH_UPDATED":
+        elif message == "SCENE_LENGTH_UPDATE":
             self.scene_view.set_scene_length(self.scene_model.scene_length)
+            self.update_timelines()
 
         elif message == "CLIP_START_UPDATED":
              self.scene_view.set_clip_end(self.scene_model.get_selected_clip().clip_end)

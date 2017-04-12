@@ -37,7 +37,7 @@ class SelectedLightGUI(tk.LabelFrame):
         self.size_slider.pack()
         size_frame.grid(row=2, column=0)
 
-        choices = ["Circle", "Line", "Entire Screen"]
+        choices = ["Circle", "Line", "Strobe"]
 
         light_type_frame = tk.LabelFrame(self, text='Light Type')
         self.light_type_var = tk.StringVar(self)
@@ -58,7 +58,7 @@ class SelectedLightGUI(tk.LabelFrame):
         #Make the Button Frame for duplicate and delete and others possibly in the future?
         button_frame = tk.Frame(self)
         #Make the buttons
-        self.delete_button = tk.Button(button_frame, text="Delete", command=lambda: self.message_view("SELECTED_LIGHT_DELETE"))
+        self.delete_button = tk.Button(button_frame, text="Delete", command=lambda: self.message_view("SELECTED_LIGHT_DELETED"))
         self.duplicate_button = tk.Button(button_frame, text="Duplicate", command= lambda: self.message_view("SELECTED_LIGHT_DUPLICATED") )
         self.delete_button.pack(side=tk.LEFT)
         self.duplicate_button.pack(side=tk.LEFT)

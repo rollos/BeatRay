@@ -94,10 +94,10 @@ class MovementClipEditor(tk.LabelFrame):
         self.c_radius_box = EntryBoxWithFrame(circle_frame, "radius", width=3,
                                               callback=lambda *args:self.message_view("C_RADIUS_UPDATED"))
 
-        self.c_start_degrees_box = EntryBoxWithFrame(circle_frame, "Start Degrees", width=3,
+        self.c_start_degrees_box = EntryBoxWithFrame(circle_frame, "Offset", width=3,
                                                      callback=lambda *args:self.message_view("C_START_DEGREES_UPDATED"))
 
-        self.c_end_degrees_box = EntryBoxWithFrame(circle_frame, "End Degrees", width=3,
+        self.c_end_degrees_box = EntryBoxWithFrame(circle_frame, "Rotations", width=3,
                                                    callback=lambda *args:self.message_view("C_END_DEGREES_UPDATED"))
 
         self.c_center_location_box.grid(column=0, row=0, rowspan=2)
@@ -115,9 +115,9 @@ class MovementClipEditor(tk.LabelFrame):
         self.s_center_location_box = CoordinatesBox(spiral_frame, "Center Point",
                                                     callback=lambda *args: self.message_view("S_CENTER_LOCATION_UPDATED"))
 
-        self.s_start_degrees_box = EntryBoxWithFrame(spiral_frame, "Start Degrees", width=3,
+        self.s_start_degrees_box = EntryBoxWithFrame(spiral_frame, "Offset", width=3,
                                                      callback=lambda *args: self.message_view("S_START_DEGREES_UPDATED"))
-        self.s_end_degrees_box = EntryBoxWithFrame(spiral_frame, "End Degrees", width=3,
+        self.s_end_degrees_box = EntryBoxWithFrame(spiral_frame, "Rotations", width=3,
                                                    callback=lambda *args: self.message_view("S_END_DEGREES_UPDATED"))
         self.s_start_radius_box = EntryBoxWithFrame(spiral_frame, "Start Radius", width=3,
                                                     callback=lambda *args: self.message_view("S_START_DEGREES_UPDATED"))

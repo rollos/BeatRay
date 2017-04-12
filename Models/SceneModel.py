@@ -75,8 +75,6 @@ class SceneModel():
             lights[id] = self.lights[id].__getstate__()
 
         d["lights"] = lights
-        print("test")
-        print(d)
 
         return d
 
@@ -138,6 +136,7 @@ class SceneModel():
 
     def set_scene_length(self, length):
         self.scene_length = length
+
         self.notify_observers("SCENE_LENGTH_UPDATE")
 
     def switch_play_state(self):
@@ -168,8 +167,8 @@ class SceneModel():
             print("Light does not exist")
 
 
-    def new_light(self, state=None, duplicate=False):
-        light = LightModel(self, id=self.light_id_counter, state=state, duplicate=duplicate)
+    def new_light(self, state=None):
+        light = LightModel(self, id=self.light_id_counter, state=state)
         self.lights[self.light_id_counter] = light
 
         self.selected_light_id = self.light_id_counter
@@ -178,6 +177,15 @@ class SceneModel():
         self.select_light(self.light_id_counter)
 
         self.light_id_counter += 1
+
+    def delete_selected_light(self):
+        sel_light = self.get_selected_light()
+        sel_light.rendered_light.delete_light()
+
+        del self.lights[self.selected_light_id]
+
+        self.selected_light_id = None
+
 
 
 
@@ -196,7 +204,9 @@ class SceneModel():
             self.notify_observers("NO_LIGHT_SELECTED")
 
     def light_type_updated(self, type):
+
         self.lights[self.selected_light_id].update_shape(type)
+
 
     def get_selected_light(self):
         if self.selected_light_id in self.lights.keys():

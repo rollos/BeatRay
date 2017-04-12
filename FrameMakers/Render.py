@@ -21,10 +21,27 @@ class RenderedLight:
         self.draw_light()
 
     def draw_light(self):
+
+
         if self.light.shape == "Circle":
             self.light_id = self.canvas.create_circle(*self.current_position,
                                                       self.light.size,
                                                       fill="black")
+        elif self.light.shape == "Strobe":
+            self.light_id = self.canvas.create_rectangle(0,0, self.canvas.winfo_width(), self.canvas.winfo_height(), fill="black")
+
+    def redraw_light(self, light):
+        if self.light_id is not None:
+            self.canvas.delete(self.light_id)
+
+        self.light = light
+        self.draw_light()
+
+
+    def delete_light(self):
+        self.canvas.delete(self.light_id)
+
+
 
     def resize_light(self, size):
         x, y = self.current_position
@@ -32,17 +49,14 @@ class RenderedLight:
 
     def color_light(self,color):
         if type(color) is tuple:
-            if color == (0,0,0):
-                self.canvas.tag_lower(self.light_id)
+            color = convert_to_color(*color)
 
-            self.canvas.itemconfig(self.light_id, fill=convert_to_color(*color))
-        elif type(color) is str:
-            if color == convert_to_color(0,0,0):
-                self.canvas.tag_lower(self.light_id)
+        if color == convert_to_color(0,0,0):
+            self.canvas.tag_lower(self.light_id)
 
-            self.canvas.itemconfig(self.light_id, fill=color)
-        else:
-            raise ValueError
+        self.canvas.itemconfig(self.light_id, fill=color, outline=color)
+
+
 
     def render_clips(self):
         movement_clips = [render_clip(clip) for clip in self.light.movement_clips]
@@ -59,7 +73,13 @@ class RenderedLight:
             radius = frame.radius
 
 
-            self.move_light(x, y, radius)
+            if frame.light_type == "Circle":
+
+                self.move_light(x, y, radius)
+
+
+
+
             self.color_light(frame.color)
 
         except:

@@ -26,6 +26,7 @@ class TimelineContainer(tk.Frame):
         length=4
         
     def set_length(self, beats):
+        self.scene_length = beats
         self.move_timeline.set_length(beats)
         self.color_timeline.set_length(beats)
 
@@ -53,7 +54,7 @@ class Timeline(tk.Frame):
 
         self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=1)
 
-
+        self.clip_dict = None
 
         self.length= None
 
@@ -67,8 +68,11 @@ class Timeline(tk.Frame):
 
     def set_length(self, length):
         self.length = length
+        if self.clip_dict is not None:
+            self.draw_all_clips(self.clip_dict)
 
     def draw_all_clips(self, clip_dict:dict):
+        self.clip_dict = clip_dict
         self.canvas.delete("all")
 
         self.scrubber.draw_scrub()

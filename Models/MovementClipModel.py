@@ -95,6 +95,8 @@ class MovementClipModel(ClipModel):
 
 
 
+
+
     #Render to a dictionary of LightFranes
     def render_clip(self):
         self.clip_frames = move_render_to_frames(self)

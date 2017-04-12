@@ -7,36 +7,6 @@ from Utils.Utils import _create_circle
 
 
 
-
-def tester():
-    root = tk.Tk()
-    canvas = tk.Canvas(root, width=200, height=200, borderwidth=0, highlightthickness=0, bg="black")
-    canvas.grid()
-
-    tk.Canvas.create_circle = _create_circle
-
-
-    frames = make_line_frames(20, 20, "Circle", (0, 0), (100, 100))
-
-
-    frame_counter = 0
-
-    while True:
-
-        time.sleep(.1)
-
-        canvas.delete("all")
-        try:
-            frames[frame_counter].draw(canvas)
-        except:
-            break
-
-
-        frame_counter += 1
-        root.update_idletasks()
-        root.update()
-
-
 def move_render_to_frames(clip):
 
     print("making_schedules")
@@ -62,16 +32,18 @@ def move_render_to_frames(clip):
                                 convert_relative_to_absolute(clip.end_location, canvas))
 
     elif clip.type == "Circle":
+        end_degrees = (clip.c_end_degrees * 360) + clip.c_start_degrees
         return make_circle_frames(start_frame, end_frame, frame_length,
                                   light_size, type,
                                   convert_relative_to_absolute(clip.c_center_location, canvas),
-                                  clip.c_start_degrees, clip.c_end_degrees,
+                                  clip.c_start_degrees, end_degrees,
                                   clip.c_radius)
     elif clip.type == "Spiral":
+        end_degrees = (clip.s_end_degrees * 360) + clip.s_start_degrees
         return make_spiral_frames(start_frame, end_frame, frame_length,
                                   light_size, type,
                                   convert_relative_to_absolute(clip.s_center_location, canvas),
-                                  clip.s_start_degrees, clip.s_end_degrees,
+                                  clip.s_start_degrees, end_degrees,
                                   clip.s_start_radius,
                                   clip.s_end_radius)
 
