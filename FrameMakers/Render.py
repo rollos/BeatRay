@@ -7,6 +7,7 @@ from Models.MovementClipModel import MovementClipModel
 
 class RenderedLight:
     def __init__(self, light, canvas):
+
         self.light = light
         self.canvas = canvas
 
@@ -29,6 +30,10 @@ class RenderedLight:
                                                       fill="black")
         elif self.light.shape == "Strobe":
             self.light_id = self.canvas.create_rectangle(0,0, self.canvas.winfo_width(), self.canvas.winfo_height(), fill="black")
+
+
+        self.canvas.tag_bind(self.light_id, "<ButtonPress-1>", self.on_token_press)
+
 
     def redraw_light(self, light):
         if self.light_id is not None:
@@ -124,7 +129,10 @@ class RenderedLight:
                 else:
                     self.frames[x] = most_recent_frame
 
+    def on_token_press(self, *args):
+        self.light.parent_scene.select_light(self.light.id)
 
+        pass
 
 
 def render_clip(clip):

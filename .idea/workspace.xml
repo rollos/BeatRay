@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1c014613-b656-4c56-9b6e-30a1d8e267c8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TkGUI/Timeline.py" afterPath="$PROJECT_DIR$/TkGUI/Timeline.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrameMakers/Render.py" afterPath="$PROJECT_DIR$/FrameMakers/Render.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,7 +20,7 @@
     <SUITE FILE_PATH="coverage/LightShow$DisplayLightModel.coverage" NAME="DisplayLightModel Coverage Results" MODIFIED="1491426568396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LightShow$Utils.coverage" NAME="Utils Coverage Results" MODIFIED="1491504856725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LightShow$FullScreenDisplay.coverage" NAME="FullScreenDisplay Coverage Results" MODIFIED="1487715638623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/LightShow$Driver.coverage" NAME="Driver Coverage Results" MODIFIED="1492031982043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LightShow$Driver.coverage" NAME="Driver Coverage Results" MODIFIED="1492044342025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LightShow$GUIMovementPanel.coverage" NAME="GUIMovementPanel Coverage Results" MODIFIED="1490124951656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GUI" />
     <SUITE FILE_PATH="coverage/LightShow$PyGame.coverage" NAME="PyGame Coverage Results" MODIFIED="1487923051031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/LightShow$Scene.coverage" NAME="Scene Coverage Results" MODIFIED="1490385977020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -39,7 +39,7 @@
       <file leaf-file-name="SceneModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Models/SceneModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="-1785">
               <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -60,21 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Timeline.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Timeline.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TkGUI/Timeline.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="126" column="23" lean-forward="true" selection-start-line="126" selection-start-column="23" selection-end-line="126" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MovementClipModel.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Models/MovementClipModel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1365">
-              <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+            <state relative-caret-position="338">
+              <caret line="247" column="8" lean-forward="false" selection-start-line="247" selection-start-column="8" selection-end-line="248" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -83,8 +73,8 @@
       <file leaf-file-name="LightModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Models/LightModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1230">
-              <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
               </folding>
@@ -95,7 +85,7 @@
       <file leaf-file-name="SceneController.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controllers/SceneController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3315">
+            <state relative-caret-position="202">
               <caret line="224" column="39" lean-forward="false" selection-start-line="224" selection-start-column="39" selection-end-line="224" selection-end-column="39" />
               <folding />
             </state>
@@ -115,17 +105,27 @@
       <file leaf-file-name="Render.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FrameMakers/Render.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+            <state relative-caret-position="406">
+              <caret line="126" column="25" lean-forward="true" selection-start-line="126" selection-start-column="25" selection-end-line="126" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SelectedLightGUI.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/tkinter/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="1548" column="0" lean-forward="false" selection-start-line="1548" selection-start-column="0" selection-end-line="1548" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SelectedLightGUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TkGUI/SelectedLightGUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
+            <state relative-caret-position="82">
               <caret line="60" column="125" lean-forward="false" selection-start-line="60" selection-start-column="125" selection-end-line="60" selection-end-column="125" />
               <folding />
             </state>
@@ -135,7 +135,7 @@
       <file leaf-file-name="MovementClipEditor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TkGUI/MovementClipEditor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2460">
+            <state relative-caret-position="511">
               <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
               <folding>
                 <marker date="1491882236000" expanded="true" signature="5299:5814" ph="..." />
@@ -251,10 +251,10 @@
         <option value="$PROJECT_DIR$/Models/MovementClipModel.py" />
         <option value="$PROJECT_DIR$/Models/LightModel.py" />
         <option value="$PROJECT_DIR$/TkGUI/SelectedLightGUI.py" />
-        <option value="$PROJECT_DIR$/FrameMakers/Render.py" />
         <option value="$PROJECT_DIR$/Models/SceneModel.py" />
         <option value="$PROJECT_DIR$/Controllers/SceneController.py" />
         <option value="$PROJECT_DIR$/TkGUI/Timeline.py" />
+        <option value="$PROJECT_DIR$/FrameMakers/Render.py" />
       </list>
     </option>
   </component>
@@ -266,8 +266,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="685" />
+    <option name="width" value="1920" />
+    <option name="height" value="964" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -833,7 +833,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492029182652</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Gridlines are implemented">
+      <created>1492032051146</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1492032051146</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -846,7 +853,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="685" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="964" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14135703" sideWeight="0.4934334" order="0" side_tool="false" content_ui="combo" />
@@ -855,7 +862,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32912844" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25801012" sideWeight="0.4978701" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17545871" sideWeight="0.4978701" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12034079" sideWeight="0.5065666" order="2" side_tool="true" content_ui="tabs" />
@@ -931,7 +938,8 @@
     <MESSAGE value="Fixed jerkiness by having the renderer handle converting the relative coordinates to absolute ones" />
     <MESSAGE value="Restructured Files, Duplicating lights is working" />
     <MESSAGE value="Changing scene length is working correctly, deleting a light is kind-of working&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changing scene length is working correctly, deleting a light is kind-of working&#10;" />
+    <MESSAGE value="Gridlines are implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gridlines are implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1136,80 +1144,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49230">
-          <caret line="3284" column="0" lean-forward="false" selection-start-line="3284" selection-start-column="0" selection-end-line="3284" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils/Defaults.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="21" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Models/MovementClipModel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1365">
           <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TkGUI/SelectedLightGUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="60" column="125" lean-forward="false" selection-start-line="60" selection-start-column="125" selection-end-line="60" selection-end-column="125" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/SceneModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/LightModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FrameMakers/Render.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TkGUI/MovementClipEditor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2460">
-          <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
-          <folding>
-            <marker date="1491882236000" expanded="true" signature="5299:5814" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/SceneController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3315">
-          <caret line="224" column="39" lean-forward="false" selection-start-line="224" selection-start-column="39" selection-end-line="224" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -1226,8 +1164,78 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TkGUI/Timeline.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="126" column="23" lean-forward="true" selection-start-line="126" selection-start-column="23" selection-end-line="126" selection-end-column="23" />
+        <state relative-caret-position="338">
+          <caret line="247" column="8" lean-forward="false" selection-start-line="247" selection-start-column="8" selection-end-line="248" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/SceneModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1785">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils/Defaults.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="21" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/SceneController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="224" column="39" lean-forward="false" selection-start-line="224" selection-start-column="39" selection-end-line="224" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/LightModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="1548" column="0" lean-forward="false" selection-start-line="1548" selection-start-column="0" selection-end-line="1548" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FrameMakers/Render.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="126" column="25" lean-forward="true" selection-start-line="126" selection-start-column="25" selection-end-line="126" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TkGUI/MovementClipEditor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+          <folding>
+            <marker date="1491882236000" expanded="true" signature="5299:5814" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TkGUI/SelectedLightGUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="60" column="125" lean-forward="false" selection-start-line="60" selection-start-column="125" selection-end-line="60" selection-end-column="125" />
           <folding />
         </state>
       </provider>
