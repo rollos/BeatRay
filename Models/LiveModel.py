@@ -24,21 +24,16 @@ class LiveModel():
 
         self.midi_clock = None
 
+        self.sync_counter = 0
+
+
+
 
 
     def set_midi_input(self, input):
-        self.midi_input = input
+        self.midi_clock = input
 
-        self.run_clock()
-
-    def run_clock(self):
-        if self.midi_input is None: return
-        while(True):
-            for message in self.midi_input:
-                print(message)
-
-                if message.type == 'clock':
-                    self.run_frame()
+       # self.run_clock()
 
 
 
@@ -80,6 +75,24 @@ class LiveModel():
         self.state = state
 
         self.notify_observers("STATE_UPDATED")
+
+
+    #This method is continuously run during the mainloop:
+    #Handle all values here
+    def single_loop(self):
+
+        message = self.midi_clock.receive()
+        if message.type == 'clock':
+            if self.sync_counter == 0:
+                self.notify_observers("CLOCK_BEAT")
+            self.sync_counter = (self.sync_counter + 1) % 24
+            self.notify_observers("CLOCK_TICK")
+
+    def resync(self):
+        self.sync_counter = 0
+
+
+
 
 class SelectorSquareModel():
     def __init__(self, position, canvas, parent):

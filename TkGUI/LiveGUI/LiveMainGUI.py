@@ -2,6 +2,7 @@ import tkinter as tk
 from Utils.Defaults import *
 import TkGUI.SaveFile
 import TkGUI.DisplayWindow
+import mido
 import os
 
 class LiveMainApp(tk.Frame):
@@ -21,11 +22,16 @@ class LiveMainApp(tk.Frame):
 
         self.ss_panel = SceneSelectorPanel(self)
 
+        self.bpm_area = BPMArea(self)
+
         self.file_loader = FileLoader(self)
 
-        self.ss_panel.grid(row=0, column=0)
 
-        self.file_loader.grid(row=1, column=0)
+        self.bpm_area.grid(row=0, column=0, sticky="NSW")
+
+        self.ss_panel.grid(row=1, column=0)
+
+        self.file_loader.grid(row=2, column=0)
 
         self.save_window = TkGUI.SaveFile.TkFileDialog(self)
 
@@ -182,3 +188,37 @@ class FileLoader(tk.Frame):
 
     def get_selected_file(self):
         return self.list.get(self.cur_index)
+
+class BPMArea(tk.LabelFrame):
+    def __init__(self,parent):
+        self.parent = parent
+        super().__init__(parent)
+
+        self.resync_button = tk.Button(self, text="Resync", command = lambda *args: self.parent.message_view("RESYNC"))
+
+        choices = mido.get_input_names()
+        choices.append('None')
+
+        clock_selector_frame = tk.LabelFrame(self, text='Clock Input')
+
+
+
+        self.clock_var = tk.StringVar(self)
+        self.clock_var.set('None')
+
+        self.clock_var.trace('w', lambda *args: self.parent.message_view("CLOCK_INPUT_UPDATED"))
+
+        self.type_selection = tk.OptionMenu(clock_selector_frame, self.clock_var, *choices)
+        self.type_selection.pack()
+
+        self.clock_display = tk.Canvas(self, width=10, height=10, bg="black")
+
+        clock_selector_frame.pack(side=tk.LEFT)
+
+        self.clock_display.pack(side=tk.LEFT)
+        self.resync_button.pack(side=tk.LEFT)
+
+
+    def flash_light(self):
+        self.clock_display.config(bg="red")
+        self.clock_display.after(100, lambda: self.clock_display.config(bg='black'))

@@ -4,6 +4,8 @@ from Utils.Defaults import *
 class LiveController():
     def __init__(self,root):
 
+        self.root = root
+
         self.view = LiveView(root)
 
         self.model = LiveModel(self.view.gui.displaywindow.canvas)
@@ -13,12 +15,24 @@ class LiveController():
 
         self.model.set_midi_input(self.view.get_midi_input())
 
+        self.run_clock()
+
 
     def update(self, type, message, value=None):
         if type == MODELUPDATE:
             self.update_view(message, value)
         elif type == VIEWUPDATE:
             self.update_model(message, value)
+
+    def run_clock(self):
+        while(True):
+            self.root.update_idletasks()
+            self.root.update()
+
+            if self.model.midi_clock is not None:
+                self.model.single_loop()
+
+
 
     def update_model(self, message, value=None):
         print("Message from View:{}, value={}".format(message, value))
@@ -32,6 +46,12 @@ class LiveController():
             if self.model.selector_squares[x][y].state == LIVE_LOAD:
                 self.model.load_into_square(value, self.view.get_selected_file())
             pass
+
+        elif message == "CLOCK_INPUT_UPDATED":
+            self.model.set_midi_input(self.view.get_midi_input())
+
+        elif message == "RESYNC":
+            self.model.resync()
 
     def update_view(self, message, value=None):
         print("Message from Model:{}, value={}".format(message, value))
@@ -47,3 +67,6 @@ class LiveController():
         elif message == "SQUARE_LOADED":
             x,y = value
             self.view.display_square((x,y), self.model.selector_squares[x][y])
+
+        elif message == "CLOCK_BEAT":
+            self.view.flash_bpm_light()

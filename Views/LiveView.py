@@ -19,9 +19,9 @@ class LiveView():
 
     def get_midi_input(self):
         try:
-            return mido.open_input('Traktor Virtual Output')
+            return mido.open_input(self.gui.bpm_area.clock_var.get())
         except OSError:
-            print("Traktor not Open")
+            print("No Longer Open")
 
     def open_directory(self):
         return self.gui.get_directory()
@@ -48,3 +48,6 @@ class LiveView():
     def display_square(self, position, square):
         x,y = position
         self.gui.ss_panel.display_square(position, square)
+
+    def flash_bpm_light(self):
+        self.gui.bpm_area.flash_light()
