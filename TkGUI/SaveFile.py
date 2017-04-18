@@ -24,6 +24,12 @@ class TkFileDialog(tk.Frame):
         if filename:
             return filename
 
+    def askdirectoryasfilepath(self):
+        filename = tk.filedialog.askdirectory()
+
+        if filename:
+            return filename
+
 if __name__=='__main__':
     root = tk.Tk()
     TkFileDialog(root).pack()
