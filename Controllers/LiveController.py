@@ -45,7 +45,6 @@ class LiveController():
 
         elif message == "BUTTON_PRESSED":
             x,y = value
-            square = self.model.selector_squares[x][y]
             if self.model.selector_squares[x][y].state == LIVE_LOAD:
                 self.model.load_into_square(value, self.view.get_selected_file())
 

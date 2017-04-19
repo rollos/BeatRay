@@ -100,7 +100,7 @@ class LiveModel():
         x, y = value
         if self.selector_squares[x][y].type == "Hold":
 
-            self.display_model.delete_active_light()
+            self.selector_squares[x][y].clear_from_screen()
             self.selector_squares[x][y].state = LIVE_PAUSE
             self.notify_observers("SQUARE_STATE_UPDATED", value)
 
@@ -120,11 +120,11 @@ class DisplayModel():
             selector_square.play_pressed()
         elif selector_square.sync_state == True:
             self.sync_wait_scene = selector_square
+            selector_square.play_pressed()
 
 
     def play_state_press(self, selector_square):
-        self.delete_active_light()
-        self.set_active_scene(None)
+        selector_square.clear_from_screen()
         selector_square.play_pressed()
 
     def clock_beat(self):
@@ -226,6 +226,10 @@ class SelectorSquareModel():
 
     def set_type(self, type):
         self.type = type
+
+    def clear_from_screen(self):
+        for light in self.live_scene_model.rendered_lights:
+            light.delete_light()
 
 
 
