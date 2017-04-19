@@ -164,7 +164,9 @@ class DisplayModel():
 
     def move_active_light(self, scrubber):
         for light in self.active_square.live_scene_model.rendered_lights:
-            light.move_light_to_scrubber(scrubber)
+            end = light.move_light_to_scrubber(scrubber)
+            if end == "SCENE_ENDED":
+                self.active_scene_scrubber = 0
 
     def delete_active_light(self):
         if self.active_square is None:
