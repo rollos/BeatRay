@@ -36,7 +36,7 @@ class MovementClipEditor(tk.LabelFrame):
         self.type_selection.pack()
 
         type_frame.grid(row=0,column=0)
-        self.type_var.trace('w', self.clip_type_updated)
+
 
         self.set_active_args_window(message=True)
 

@@ -5,11 +5,12 @@ import TkGUI.DisplayWindow
 import mido
 import os
 
+
 class LiveMainApp(tk.Frame):
     def __init__(self, parent, view):
         tk.Frame.__init__(self, parent)
 
-
+        self.blank_menu = tk.Menu()
         self.canvas = tk.Canvas(parent)
      #   self.canvas.pack()
 
@@ -38,9 +39,16 @@ class LiveMainApp(tk.Frame):
 
         t = tk.Toplevel()
         t.wm_title("Display Window")
+        # t.wm_overrideredirect(True)
+        # t.wm_overrideredirect(False)
+
 
         self.displaywindow = TkGUI.DisplayWindow.DisplayWindow(t)
         self.displaywindow.pack(fill=tk.BOTH, expand=tk.YES, padx=0, pady=0)
+
+        # t.attributes("-fullscreen",'true')
+        t.config(menu=self.blank_menu)
+        #self.displaywindow.canvas.bind("<Configure>", lambda *args:self.message_view("DISPLAY_WINDOW_RESIZED"))
 
         self.pack()
 
@@ -79,7 +87,7 @@ class SceneSelectorPanel(tk.Frame):
     def display_square(self, position, squaremodel):
         x,y = position
 
-        self.squares[x][y].display_square(squaremodel.live_scene_model)
+        self.squares[x][y].display_square(squaremodel)
 
 
 
@@ -103,26 +111,34 @@ class SceneSquare(tk.LabelFrame):
         self.parent = parent
         self.position = position
 
-        self.button = tk.Button(self, width=3, text="Load",
-                                command = lambda *args: self.message_view("BUTTON_PRESSED"))
+        # self.button = tk.Button(self, width=3, text="Load",
+        #                         command = lambda *args: self.message_view("BUTTON_PRESSED"))
+
+        self.button = PlayButton(self)
+
+      #  self.button.bind("<ButtonPress-1>", lambda *args: self.message_view("BUTTON_DOWN"))
+      #  self.button.bind("<ButtonRelease-1>", lambda *args: self.message_view("BUTTON_RELEASED"))
 
 
 
+        self.sync_check = tk.Checkbutton(self, command=lambda *args: self.message_view("SYNC_CHECKED"))
 
-
-        choices = ['Hold', 'Play Once', 'Loop']
+        choices = ['Play Once', 'Hold', 'Loop']
 
         self.type_frame = tk.LabelFrame(self, text='Type')
         self.type_var = tk.StringVar(self)
-        self.type_var.set('None')
+        self.type_var.set('Play Once')
+
+        self.type_var.trace('w', lambda *args: self.message_view("TYPE_UPDATED"))
 
         self.type_selection = tk.OptionMenu(self.type_frame, self.type_var, *choices)
         self.type_selection.pack()
 
         self.bind("<Enter>", self.mark_mouseover)
 
-        self.button.pack()
-        self.type_frame.pack()
+        self.button.grid(column=0, row=0)
+        self.sync_check.grid(column=1, row=0)
+        self.type_frame.grid(column=0, row=1, columnspan=2)
 
     def mark_mouseover(self, *args):
      #   print(self.position)
@@ -131,16 +147,13 @@ class SceneSquare(tk.LabelFrame):
     def message_view(self, message):
         self.parent.message_view(message, value=self.position)
 
-    def show_load_state(self):
-        self.button.config(text="Load")
 
-
-    def show_play_state(self):
-        self.button.config(text=">")
+    def set_state(self, state):
+        self.button.set_state(state)
 
     def display_square(self, squaremodel):
-        self.config(text=squaremodel.filename)
-        self.show_play_state()
+        self.config(text=squaremodel.live_scene_model.filename)
+        self.set_state(squaremodel.state)
 
 class FileLoader(tk.Frame):
     def __init__(self, parent):
@@ -222,3 +235,37 @@ class BPMArea(tk.LabelFrame):
     def flash_light(self):
         self.clock_display.config(bg="red")
         self.clock_display.after(100, lambda: self.clock_display.config(bg='black'))
+
+
+class PlayButton(tk.Frame):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.canvas = tk.Canvas(self, height=30, width=30, background="black")
+
+
+        self.parent = parent
+
+        self.play_img = tk.PhotoImage(file ="Images/PlayButton.gif")
+        self.stop_img = tk.PhotoImage(file ="Images/StopButton.gif")
+        self.load_img = tk.PhotoImage(file = "Images/LoadButton.gif")
+        self.canvas.create_image(3, 3, image=self.load_img, anchor="nw")
+
+        self.canvas.bind("<ButtonPress-1>", lambda *args: self.message_view("BUTTON_PRESSED"))
+        self.canvas.bind("<ButtonRelease-1>", lambda *args: self.message_view("BUTTON_RELEASED"))
+
+        self.canvas.pack()
+
+    def message_view(self, message):
+        self.parent.message_view(message)
+
+    def set_state(self, state):
+        self.canvas.delete("all")
+        if state == LIVE_LOAD:
+            self.canvas.create_image(3, 3, image=self.load_img, anchor="nw")
+        elif state == LIVE_PLAY:
+            self.canvas.create_image(3, 3, image=self.stop_img, anchor="nw")
+        elif state == LIVE_PAUSE:
+            self.canvas.create_image(3, 3, image=self.play_img, anchor="nw")
+
+

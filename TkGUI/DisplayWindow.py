@@ -22,6 +22,7 @@ class DisplayWindow(tk.Frame):
 
         set_aspect(self.content_frame, self, aspect_ratio=RES_RATIO)
 
+
 def set_aspect(content_frame, pad_frame, aspect_ratio):
     # a function which places a frame within a containing frame, and
     # then forces the inner frame to keep a specific aspect ratio

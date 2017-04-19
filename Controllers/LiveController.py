@@ -15,6 +15,8 @@ class LiveController():
 
         self.model.set_midi_input(self.view.get_midi_input())
 
+
+        #root.mainloop()
         self.run_clock()
 
 
@@ -43,18 +45,35 @@ class LiveController():
 
         elif message == "BUTTON_PRESSED":
             x,y = value
+            square = self.model.selector_squares[x][y]
             if self.model.selector_squares[x][y].state == LIVE_LOAD:
                 self.model.load_into_square(value, self.view.get_selected_file())
+
+            else:
+                self.model.play_pressed(value)
             pass
+
+        elif message == "BUTTON_RELEASED":
+            self.model.button_released(value)
 
         elif message == "CLOCK_INPUT_UPDATED":
             self.model.set_midi_input(self.view.get_midi_input())
 
+        elif message == "TYPE_UPDATED":
+            x,y = value
+            self.model.selector_squares[x][y].set_type(self.view.get_type(value))
+
         elif message == "RESYNC":
-            self.model.resync()
+            self.model.display_model.resync()
+
+        elif message == "SYNC_CHECKED":
+            x,y = value
+            self.model.selector_squares[x][y].toggle_sync()
 
     def update_view(self, message, value=None):
-        print("Message from Model:{}, value={}".format(message, value))
+        if message != "CLOCK_TICK":
+            print("Message from Model:{}, value={}".format(message, value))
+
         if message == "DIRECTORY_UPDATED":
             print(self.model.active_directory)
             self.view.display_directory(self.model.loaded_files)
@@ -67,6 +86,11 @@ class LiveController():
         elif message == "SQUARE_LOADED":
             x,y = value
             self.view.display_square((x,y), self.model.selector_squares[x][y])
+
+        elif message == "SQUARE_STATE_UPDATED":
+            x,y = value
+
+            self.view.update_square_state((x,y), self.model.selector_squares[x][y].state)
 
         elif message == "CLOCK_BEAT":
             self.view.flash_bpm_light()

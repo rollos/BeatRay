@@ -51,3 +51,11 @@ class LiveView():
 
     def flash_bpm_light(self):
         self.gui.bpm_area.flash_light()
+
+    def update_square_state(self, position, state):
+        x,y = position
+        self.gui.ss_panel.squares[x][y].set_state(state)
+
+    def get_type(self, value):
+        x,y = value
+        return self.gui.ss_panel.squares[x][y].type_var.get()
