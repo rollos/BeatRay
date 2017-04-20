@@ -7,6 +7,7 @@ class LiveView():
     def __init__(self, root ):
         self.observers = []
         self.gui = LiveMainApp(root, self)
+        self.midi_input = None
 
 
 
@@ -17,11 +18,14 @@ class LiveView():
         for observer in self.observers:
             observer.update(VIEWUPDATE, message, value)
 
-    def get_midi_input(self):
+    def get_clock_input(self):
         try:
-            return mido.open_input(self.gui.bpm_area.clock_var.get())
-        except OSError:
-            print("No Longer Open")
+            return mido.open_input("Traktor Virtual Output")
+        except:
+            try:
+                return mido.open_input(self.gui.bpm_area.clock_var.get())
+            except OSError:
+                print("No Longer Open")
 
     def open_directory(self):
         return self.gui.get_directory()
@@ -59,3 +63,12 @@ class LiveView():
     def get_type(self, value):
         x,y = value
         return self.gui.ss_panel.squares[x][y].type_var.get()
+
+    def get_midi_input(self):
+        try:
+            return mido.open_input(self.gui.input_area.input_var.get())
+        except:
+            print("No Longer Open")
+
+    def set_midi_input(self, input):
+        self.midi_input = input

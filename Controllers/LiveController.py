@@ -1,6 +1,22 @@
 from Models.LiveModel import *
 from Views.LiveView import *
 from Utils.Defaults import *
+
+
+def midi_converter(msg):
+    position = DEFAULT_MAPPING[msg.control]
+    message = None
+
+    if msg.value == 127:
+        message = "BUTTON_PRESSED"
+    elif msg.value == 0:
+        message = "BUTTON_RELEASED"
+
+
+
+    return(position,message)
+
+
 class LiveController():
     def __init__(self,root):
 
@@ -13,7 +29,10 @@ class LiveController():
         self.view.register_observer(self)
         self.model.register_observer(self)
 
-        self.model.set_midi_input(self.view.get_midi_input())
+
+
+        self.model.set_midi_clock(self.view.get_clock_input())
+
 
 
         #root.mainloop()
@@ -31,8 +50,17 @@ class LiveController():
             self.root.update_idletasks()
             self.root.update()
 
+            if self.view.midi_input is not None:
+                for msg in self.view.midi_input.iter_pending():
+                    value, message = midi_converter(msg)
+                    self.update_model(message, value)
+
+
             if self.model.midi_clock is not None:
                 self.model.single_loop()
+
+
+
 
 
 
@@ -56,7 +84,10 @@ class LiveController():
             self.model.button_released(value)
 
         elif message == "CLOCK_INPUT_UPDATED":
-            self.model.set_midi_input(self.view.get_midi_input())
+            self.model.set_midi_clock(self.view.get_clock_input())
+
+        elif message == "MIDI_INPUT_UPDATED":
+            self.view.set_midi_input(self.view.get_midi_input())
 
         elif message == "TYPE_UPDATED":
             x,y = value

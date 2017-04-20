@@ -30,7 +30,7 @@ class RenderedLight:
                                                       fill="black")
         elif self.light.shape == "Strobe":
             self.light_id = self.canvas.create_rectangle(0,0, self.canvas.winfo_width(), self.canvas.winfo_height(), fill="black")
-            self.canvas.tag_lower(self.light_id)
+            #self.canvas.tag_lower(self.light_id)
 
         self.canvas.tag_bind(self.light_id, "<ButtonPress-1>", self.on_token_press)
 
@@ -44,6 +44,7 @@ class RenderedLight:
 
 
     def delete_light(self):
+        self.color_light("black")
         self.canvas.delete(self.light_id)
 
 
@@ -56,11 +57,14 @@ class RenderedLight:
         if type(color) is tuple:
 
             color = convert_to_color(*color)
-            if self.light.shape != "Strobe":
-                self.canvas.tag_raise(self.light_id)
+
 
         if color == convert_to_color(0,0,0):
             self.canvas.tag_lower(self.light_id)
+        else:# color == convert_to_color(256,256,256):
+            self.canvas.tag_raise(self.light_id)
+
+
 
         self.canvas.itemconfig(self.light_id, fill=color, outline=color)
 

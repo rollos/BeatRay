@@ -25,32 +25,45 @@ class LiveMainApp(tk.Frame):
 
         self.bpm_area = BPMArea(self)
 
+        self.input_area = MIDIInputArea(self)
+
         self.file_loader = FileLoader(self)
 
 
         self.bpm_area.grid(row=0, column=0, sticky="NSW")
 
-        self.ss_panel.grid(row=1, column=0)
+        self.input_area.grid(row=0, column=1,)
 
-        self.file_loader.grid(row=2, column=0)
+        self.ss_panel.grid(row=1, column=0, columnspan=2)
+
+        self.file_loader.grid(row=2, column=0, columnspan=2)
 
         self.save_window = TkGUI.SaveFile.TkFileDialog(self)
 
 
-        t = tk.Toplevel()
-        t.wm_title("Display Window")
-        # t.wm_overrideredirect(True)
-        # t.wm_overrideredirect(False)
+        self.toplevel = tk.Toplevel()
+        self.toplevel.wm_title("Display Window")
 
 
-        self.displaywindow = TkGUI.DisplayWindow.DisplayWindow(t)
+        self.displaywindow = TkGUI.DisplayWindow.DisplayWindow(self.toplevel)
         self.displaywindow.pack(fill=tk.BOTH, expand=tk.YES, padx=0, pady=0)
 
-        # t.attributes("-fullscreen",'true')
-        t.config(menu=self.blank_menu)
+        self.displaywindow.config(bg = "black")
+
+
+        self.toplevel.config(menu=self.blank_menu)
+
+        self.toplevel.bind("<Mod1-f>", self.fullscreen_window)
         #self.displaywindow.canvas.bind("<Configure>", lambda *args:self.message_view("DISPLAY_WINDOW_RESIZED"))
 
         self.pack()
+
+    def fullscreen_window(self, *args):
+
+        #self.toplevel.wm_overrideredirect(True)
+       # self.toplevel.wm_overrideredirect(False)
+        #self.toplevel.attributes("-fullscreen", 'true')
+        self.toplevel.state('zoomed')
 
     def get_directory(self):
         return self.save_window.askdirectoryasfilepath()
@@ -122,6 +135,7 @@ class SceneSquare(tk.LabelFrame):
 
 
         self.sync_check = tk.Checkbutton(self, command=lambda *args: self.message_view("SYNC_CHECKED"))
+        self.sync_check.toggle()
 
         choices = ['Play Once', 'Hold', 'Loop']
 
@@ -217,7 +231,10 @@ class BPMArea(tk.LabelFrame):
 
 
         self.clock_var = tk.StringVar(self)
-        self.clock_var.set('None')
+        if "Traktor Virtual Output" in choices:
+            self.clock_var.set("Traktor")
+        else:
+            self.clock_var.set('None')
 
         self.clock_var.trace('w', lambda *args: self.parent.message_view("CLOCK_INPUT_UPDATED"))
 
@@ -235,6 +252,40 @@ class BPMArea(tk.LabelFrame):
     def flash_light(self):
         self.clock_display.config(bg="red")
         self.clock_display.after(100, lambda: self.clock_display.config(bg='black'))
+
+class MIDIInputArea(tk.LabelFrame):
+    def __init__(self,parent):
+        self.parent = parent
+        super().__init__(parent)
+
+        self.resync_button = tk.Button(self, text="Map", command = lambda *args: self.parent.message_view("MAP_PRESSED"), state="disabled")
+
+        choices = mido.get_input_names()
+        choices.append('None')
+
+        clock_selector_frame = tk.LabelFrame(self, text='MIDI Input')
+
+
+
+        self.input_var = tk.StringVar(self)
+        self.input_var.set("None      ")
+
+        self.input_var.trace('w', lambda *args: self.parent.message_view("MIDI_INPUT_UPDATED"))
+
+        self.type_selection = tk.OptionMenu(clock_selector_frame, self.input_var, *choices)
+        self.type_selection.pack()
+
+        self.input_display = tk.Canvas(self, width=10, height=10, bg="black")
+
+        clock_selector_frame.pack(side=tk.LEFT)
+
+        self.input_display.pack(side=tk.LEFT)
+        self.resync_button.pack(side=tk.LEFT)
+
+
+    def flash_light(self):
+        self.input_display.config(bg="red")
+        self.input_display.after(100, lambda: self.input.config(bg='black'))
 
 
 class PlayButton(tk.Frame):

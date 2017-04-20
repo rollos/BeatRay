@@ -25,22 +25,23 @@ class LiveModel():
         self.midi_clock = None
 
 
+
+
         self.display_model = DisplayModel(self)
 
 
 
 
 
-    def set_midi_input(self, input):
+    def set_midi_clock(self, input):
         self.midi_clock = input
 
        # self.run_clock()
+    def set_midi_input(self, param):
+        self.midi_input = None
 
 
 
-
-    def run_frame(self):
-        print("frame")
 
     def register_observer(self, observer):
         self.observers.append(observer)
@@ -82,9 +83,15 @@ class LiveModel():
     #Handle all values here
     def single_loop(self):
 
-        message = self.midi_clock.receive()
-        if message.type == 'clock':
+        clock_message = self.midi_clock.receive()
+        if clock_message.type == 'clock':
             self.display_model.clock_tick()
+
+
+
+
+
+
 
     def play_pressed(self, value):
         x,y = value
@@ -100,6 +107,8 @@ class LiveModel():
         x, y = value
         if self.selector_squares[x][y].type == "Hold":
 
+            self.display_model.active_squares.remove(self.selector_squares[x][y])
+
             self.selector_squares[x][y].clear_from_screen()
             self.selector_squares[x][y].state = LIVE_PAUSE
             self.notify_observers("SQUARE_STATE_UPDATED", value)
@@ -110,27 +119,29 @@ class DisplayModel():
     def __init__(self,parent):
         self.parent = parent
         self.sync_counter = 0
-        self.active_square = None
-        self.sync_wait_scene = None
-        self.active_scene_scrubber = 0
+        self.active_squares = []
+        self.sync_wait_scenes = []
 
     def pause_state_press(self, selector_square):
         if selector_square.sync_state == False:
-            self.set_active_scene(selector_square)
+            self.active_squares.append(selector_square)
             selector_square.play_pressed()
+
         elif selector_square.sync_state == True:
-            self.sync_wait_scene = selector_square
-            selector_square.play_pressed()
+            self.sync_wait_scenes.append(selector_square)
 
 
     def play_state_press(self, selector_square):
-        selector_square.clear_from_screen()
+        self.active_squares.remove(selector_square)
+    #    selector_square.clear_from_screen()
         selector_square.play_pressed()
 
     def clock_beat(self):
-        if self.sync_wait_scene is not None:
-            self.set_active_scene(self.sync_wait_scene)
-            self.sync_wait_scene = None
+        for scene in self.sync_wait_scenes:
+            self.active_squares.append(scene)
+            scene.play_pressed()
+
+        self.sync_wait_scenes = []
 
 
         self.message_model("CLOCK_BEAT")
@@ -139,47 +150,17 @@ class DisplayModel():
         if self.sync_counter == 0:
             self.clock_beat()
 
-        if self.active_square is not None and self.active_square.live_scene_model is not None:
-            self.move_active_light(self.active_scene_scrubber)
-            self.active_scene_scrubber += 1
+
+        for square in self.active_squares:
+            square.run_frame()
+
+
 
         self.message_model("CLOCK_TICK")
         self.sync_counter = (self.sync_counter + 1) % 24
 
     def resync(self):
         self.sync_counter = 0
-
-    def set_active_scene(self, scene):
-        self.active_square = scene
-        self.active_scene_scrubber = 0
-
-        self.delete_active_light()
-
-        if scene is None:
-            return
-
-        for light in self.active_square.live_scene_model.rendered_lights:
-            light.draw_light()
-            light.move_light_to_scrubber(0)
-
-    def move_active_light(self, scrubber):
-        for light in self.active_square.live_scene_model.rendered_lights:
-            end = light.move_light_to_scrubber(scrubber)
-            if end == "SCENE_ENDED":
-                self.active_scene_scrubber = 0
-
-    def delete_active_light(self):
-        if self.active_square is None:
-            return
-
-        for light in self.active_square.live_scene_model.rendered_lights:
-            light.delete_light()
-
-        self.active_scene_scrubber = 0
-
-
-
-
 
 
     def message_model(self, message, value=None):
@@ -196,6 +177,24 @@ class SelectorSquareModel():
         self.parent = parent
         self.type = "Play Once"
 
+        self.scene_scrubber = 0
+
+    def run_frame(self):
+        for light in self.live_scene_model.rendered_lights:
+            end = light.move_light_to_scrubber(self.scene_scrubber)
+            if end == "SCENE_ENDED":
+                if self.type == "Loop" or self.type == "Hold":
+                    self.scene_scrubber = 0
+                elif self.type == "Play Once":
+                     return self.parent.display_model.play_state_press(self)
+                    #self.parent.display_model
+
+        self.scene_scrubber += 1
+
+
+
+
+
     def load_file(self, path, filename):
         if filename is None:
             return
@@ -207,11 +206,19 @@ class SelectorSquareModel():
         self.parent.notify_observers(message, value=self.position)
 
     def play_pressed(self):
+
+
         if self.state == LIVE_PLAY:
             self.state = LIVE_PAUSE
+            self.clear_from_screen()
 
         elif self.state == LIVE_PAUSE:
+            self.clear_from_screen()
             self.state = LIVE_PLAY
+            for light in self.live_scene_model.rendered_lights:
+                light.draw_light()
+                light.move_light_to_scrubber(0)
+                self.scene_scrubber = 0
 
         else:
             raise Exception("Wrong square state ")
